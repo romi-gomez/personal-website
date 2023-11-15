@@ -1,16 +1,15 @@
 import React from 'react'
 
-import "../../helpers/p5sound_fix"
+import "../helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './Muladhara01.mp3'
+import muladhara from './audio/Muladhara01.mp3'
 
-class TestSketch extends React.Component {
+class Concentric extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
     }
-
 
     Sketch = (p) => {
         // Initialize global variables and constants
@@ -217,4 +216,4 @@ class TestSketch extends React.Component {
     }
 }
 
-export default TestSketch
+export default Concentric

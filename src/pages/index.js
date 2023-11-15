@@ -1,15 +1,14 @@
 import * as React from "react"
-import TestSketch from "../artwork/testSketch/testSketch"
+import Layout from "../components/Layout"
 
 
 const IndexPage = () => {
   return (
-    <main >
+    <Layout >
       <h1>
-        Testing Sketch
+        Index
       </h1>
-      <TestSketch />  
-    </main>
+    </Layout>
   )
 }
 
