@@ -19,7 +19,8 @@ class Soundwave extends React.Component {
     }
 
     Sketch = (p) => {
-        // Initialize global variables and constants
+        if(typeof window !== 'undefined'){
+                  // Initialize global variables and constants
         let canvasWidth = document.getElementsByClassName("p5Canvas")[0].offsetWidth
         let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
         
@@ -103,6 +104,7 @@ class Soundwave extends React.Component {
                 
             }
             return false; // prevent default
+        }
         }
     }
 

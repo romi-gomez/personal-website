@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `personal-website`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.romigomez.com`
   },
   plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
