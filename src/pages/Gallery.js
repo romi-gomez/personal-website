@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
-import Soundwave from "../artwork/Soundwave"
+import SoundBlob from "../artwork/SoundBlob"
 
 const Gallery = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const GalleryPage = () => {
   return (
     <Layout children = {
       <Gallery >
-      <Soundwave />  
+      <SoundBlob />  
     </Gallery>
     }/>
   )

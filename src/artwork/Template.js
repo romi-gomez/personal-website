@@ -5,7 +5,7 @@ import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
 import muladhara from './audio/Muladhara01.mp3'
 
-class Concentric extends React.Component {
+class Template extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -218,4 +218,4 @@ class Concentric extends React.Component {
     }
 }
 
-export default Concentric
+export default Template
