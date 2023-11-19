@@ -1,6 +1,7 @@
 import * as React from "react"
 import '../styles/global.css'
 import styled from "styled-components"
+import Navbar from "./Navbar"
 
 const LayoutContainer = styled.main`
   display: flex;
@@ -11,9 +12,11 @@ const LayoutContainer = styled.main`
 
 const Layout = ({children}) => {
   return (
+    <>
+    <Navbar />
     <LayoutContainer >{children}</LayoutContainer>
+    </>
   )
 }
-
 export default Layout
 

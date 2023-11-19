@@ -103,11 +103,8 @@ class SoundBlob extends React.Component {
                     b = p.random(50,100)
                     count = 0
                 }
-                
             }
-     
              p.windowResized = () => {
-
             }
      
              // Toggles song on click

@@ -1,12 +1,13 @@
 import * as React from "react"
 import Layout from "../components/Layout"
+import { usePageQuery, graphql } from "gatsby";
 
-
-const IndexPage = () => {
+const IndexPage = (data) => {
+ 
   return (
     <Layout >
       <h1>
-        Index
+        {console.log("data", data)}
       </h1>
     </Layout>
   )
