@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import "../helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
+import muladhara from './audio/Ajna01.mp3'
 
 const Frame = styled.div`
     width: 100%;
