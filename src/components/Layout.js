@@ -13,7 +13,7 @@ const LayoutContainer = styled.main`
 const Layout = ({children}) => {
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <LayoutContainer >{children}</LayoutContainer>
     </>
   )

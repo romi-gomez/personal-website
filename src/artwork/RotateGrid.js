@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import "../helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara02.mp3'
-import image from './../images/garganta-03.jpg'
+import muladhara from './audio/Sahasara01.mp3'
+import image from './../images/coronilla03.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -25,8 +25,8 @@ class RotateGrid extends React.Component {
         let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
         
         let backgroundimg
-        let imageWidth= window.innerWidth*2
-        let imageHeight= window.innerHeight*2
+        let imageWidth= window.innerWidth*3
+        let imageHeight= window.innerHeight*3
         let sizeModifier = 1
         let imagePos = 0
 
@@ -39,8 +39,8 @@ class RotateGrid extends React.Component {
         let beatDecayRate = 0.9995
         let beatState = 0
 
-        const columns = 150
-        const rows = 100
+        const columns = 250
+        const rows = 170
 
         let selectFill=1
 
@@ -76,11 +76,11 @@ class RotateGrid extends React.Component {
             //* START BACKGROUND CODE------------------------------------------------------------------*/
 
                 p.noStroke()
-                p.tint(255,255, 255, p.random(10)); // Display at half opacity
+                p.tint(255,255, 255, p.random(40)); // Display at half opacity
                 p.noFill()
                 p.push()
-                   p.rotate(30+p.int(amplitude*100))
-                   p.image(backgroundimg, -p.width/2, -p.height/2, imageWidth+amplitude*500, imageHeight+amplitude*500)      
+                   p.rotate(-(30+p.int(amplitude*100)))
+                   p.image(backgroundimg, -p.width/2, -p.height/2, imageWidth+amplitude*1000, imageHeight+amplitude*1000)      
                 p.pop()
 
                 if(imageWidth>canvasWidth*3){
@@ -97,7 +97,7 @@ class RotateGrid extends React.Component {
             //* END BACKGROUND CODE------------------------------------------------------------------*/
 
             //* START GRID CODE------------------------------------------------------------------*/
-                p.fill(255,p.random(5))
+                p.fill(255,p.random(20))
                 p.rect(0, 0, p.width, p.height)
                 imagePos ++
 
@@ -106,7 +106,7 @@ class RotateGrid extends React.Component {
                         p.noFill()
                         const xcoord = x-p.width/2-p.width/columns
                         const ycoord = y-p.height/2-p.height/rows
-                        let color = backgroundimg.get(x+p.width+imagePos, y+p.height+imagePos)
+                        let color = backgroundimg.get(x+imagePos, y+imagePos)
 
                         p.stroke(color,0.2)
                         
@@ -116,9 +116,9 @@ class RotateGrid extends React.Component {
                         // }
 
                         p.push()
-                            p.circle(xcoord, ycoord, amplitude*100)
+                            p.circle(xcoord, ycoord, amplitude*50)
                         p.pop()
-                        p.rotate(30+p.int(amplitude*50))
+                        p.rotate(30+p.int(amplitude*100))
                         
                     }
                 }
