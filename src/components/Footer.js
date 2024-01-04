@@ -2,19 +2,20 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
-const NavContainer = styled.nav`
+const FooterContainer = styled.footer`
     position: fixed;
-    background: pink;
+    bottom: 0;
+    background: lightblue;
     width: 100%;
 `
 
 export default function Navbar() {
     return (
-        <NavContainer>
+        <FooterContainer>
             <div className="links">
                 <Link to="/">Home</Link>
                 <Link to="/gallery">Gallery</Link>
             </div>
-        </NavContainer>
+        </FooterContainer>
     )
 }

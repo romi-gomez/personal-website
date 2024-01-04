@@ -1,14 +1,8 @@
 import * as React from "react"
-import { useEffect, useState} from "react"
+import {useState} from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
-import FramesGallery from "../components/FramesGallery"
-
-const GallerysContainer = styled.div`
-  background: #000; 
-  width:100%;
-  height:100vh;
-`
+import Frame from "../components/Frame"
 
 const artWorks = [
   {name: "RotateGrid", path: "../artwork/RotateGrid"},
@@ -25,6 +19,17 @@ const artWorks = [
   {name: "RotateGrid", path: "../artwork/RotateGrid"}
 ]
 
+const GalleryContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  background: #000;
+`
+
 const GalleryPage = () => {
   const [mousePosition, setMousePosition ] = useState({x: null, y: null})
 
@@ -36,11 +41,21 @@ const GalleryPage = () => {
     setMousePosition({ x: localX, y: localY });
   };
 
+  const displayArtwork = () => {
+    return artWorks.map((artwork, key) => {
+      return (
+          <Frame id={key} key={key} mouseposition={mousePosition}>
+            {artwork.name}
+          </Frame>
+      )
+    })
+  }
+
   return (
     <Layout children = {
-      <GallerysContainer onMouseMove={handleMouseMove} >
-
-      </GallerysContainer>
+      <GalleryContainer onMouseMove={handleMouseMove} >
+        {displayArtwork()}
+      </GalleryContainer>
     }/>
   )
 }
