@@ -5,24 +5,44 @@ import Layout from "../components/Layout"
 import FramesGallery from "../components/FramesGallery"
 
 const GallerysContainer = styled.div`
-  background: #000; 
   width:100%;
-  height:100vh;
+  height: 100%;
+  overflow-y: scroll;
 `
 
-const artWorks = [
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"}
+const work = [
+  [
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"},
+    {name: "Art", path: "../artwork/RotateGrid"}
+  ],
+  [
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+    {name: "website", path: "../artwork/RotateGrid"},
+  ],
+  [
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+    {name: "animation", path: "../artwork/RotateGrid"},
+  ]
 ]
 
 const GalleryPage = () => {
@@ -36,10 +56,16 @@ const GalleryPage = () => {
     setMousePosition({ x: localX, y: localY });
   };
 
+  const displayFramesGallerys = (gallerys) => {
+    return gallerys.map((gallery, index) => {
+      return <FramesGallery key={index} frames={gallery} mousePosition={mousePosition}/>
+    })
+  }
+
   return (
     <Layout children = {
-      <GallerysContainer onMouseMove={handleMouseMove} >
-
+      <GallerysContainer onMouseMove={handleMouseMove}>
+        {displayFramesGallerys(work)}
       </GallerysContainer>
     }/>
   )

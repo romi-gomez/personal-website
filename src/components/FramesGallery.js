@@ -1,36 +1,19 @@
 import * as React from "react"
 import {useState} from "react"
 import styled from "styled-components"
-import Layout from "../components/Layout"
 import Frame from "../components/Frame"
-
-const artWorks = [
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"},
-  {name: "RotateGrid", path: "../artwork/RotateGrid"}
-]
 
 const GalleryContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: ${props => {return `repeat(${props.children.length}, 400px)`}};
   grid-template-rows: 1fr;
   grid-gap: 20px;
   justify-content: center;
-  width: 100%;
-  height: 70vh;
-  background: #000;
+  width: ${props => {return (props.children.length * 400)+(props.children.length * 20)}}px;
+  height: 80%;
 `
 
-const GalleryPage = () => {
+const FramesGallery= ({frames}) => {
   const [mousePosition, setMousePosition ] = useState({x: null, y: null})
 
   const handleMouseMove = (event) => {
@@ -41,26 +24,24 @@ const GalleryPage = () => {
     setMousePosition({ x: localX, y: localY });
   };
 
-  const displayArtwork = () => {
-    return artWorks.map((artwork, key) => {
+  const displayFrames = (frames) => {
+    return frames.map((frame, key) => {
       return (
           <Frame id={key} key={key} mouseposition={mousePosition}>
-            {artwork.name}
+            {frame.name}
           </Frame>
       )
     })
   }
 
   return (
-    <Layout children = {
       <GalleryContainer onMouseMove={handleMouseMove} >
-        {displayArtwork()}
+        {displayFrames(frames)}
       </GalleryContainer>
-    }/>
   )
 }
 
-export default GalleryPage
+export default FramesGallery
 
 export const Head = () => {
   return (

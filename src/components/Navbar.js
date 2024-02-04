@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const NavContainer = styled.nav`
     position: fixed;
+    z-index:10000;
     background: pink;
     width: 100%;
 `
