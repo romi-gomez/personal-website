@@ -4,7 +4,7 @@ import "../helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
 import muladhara from './audio/Sahasara01.mp3'
-import image from './../images/coronilla03.jpg'
+import image from './images/coronilla03.jpg'
 
 const Frame = styled.div`
     width: 100%;

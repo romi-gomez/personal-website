@@ -6,8 +6,11 @@ import FramesGallery from "../components/FramesGallery"
 
 const GallerysContainer = styled.div`
   width:100%;
-  height: 100%;
-  overflow-y: scroll;
+  height: 210%;
+  overflow: hidden;
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 const work = [
@@ -46,25 +49,15 @@ const work = [
 ]
 
 const GalleryPage = () => {
-  const [mousePosition, setMousePosition ] = useState({x: null, y: null})
-
-  const handleMouseMove = (event) => {
-    //  Get mouse position relative to element
-    const localX = event.clientX ;
-    const localY = event.clientY ;
-
-    setMousePosition({ x: localX, y: localY });
-  };
-
   const displayFramesGallerys = (gallerys) => {
     return gallerys.map((gallery, index) => {
-      return <FramesGallery key={index} frames={gallery} mousePosition={mousePosition}/>
+      return <FramesGallery key={index} frames={gallery}/>
     })
   }
 
   return (
     <Layout children = {
-      <GallerysContainer onMouseMove={handleMouseMove}>
+      <GallerysContainer>
         {displayFramesGallerys(work)}
       </GallerysContainer>
     }/>
