@@ -12,7 +12,7 @@ const Frame = styled.div`
     overflow: hidden;
 `
 
-class Rotate extends React.Component {
+class RotateGrid extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -38,8 +38,8 @@ class Rotate extends React.Component {
         let beatDecayRate = 0.9995
         let beatState = 0
 
-        const columns = 50
-        const rows = 30
+        const columns = 10
+        const rows = 7
 
 
         // Loads the music file into p5.js to play on click
@@ -74,10 +74,10 @@ class Rotate extends React.Component {
             //* START BACKGROUND CODE------------------------------------------------------------------*/
 
                 p.noStroke()
-                p.tint(255,255, 255, p.random(30,100)); // Display at half opacity
+                p.tint(255,255, 255, p.random(0)); // Display at half opacity
                 p.noFill()
                 p.push()
-                   // p.rotate(30+p.int(amplitude*10))
+                    //p.rotate(30+p.int(amplitude*10))
                     p.image(backgroundimg, (0), (0), imageWidth+amplitude*100, imageHeight+amplitude*20)      
                 p.pop()
 
@@ -98,16 +98,19 @@ class Rotate extends React.Component {
                 p.fill(255,p.random(10))
                 p.rect(0, 0, p.width, p.height)
 
-                for (let x=0; x<p.width+100; x+=p.width/columns){
-                    for (let y=0; y<p.height+100; y+=p.height/rows){
+                console.log(p.width/columns, p.height/rows)
+
+                for (let x=p.width/columns+p.width/columns/2; x<p.width+100; x+=p.width/columns){
+                    for (let y=p.height/rows+p.height/rows/2; y<p.height+100; y+=p.height/rows){
                         p.noFill()
                         const xcoord = x-p.width/2-p.width/columns
                         const ycoord = y-p.height/2-p.height/rows
                         let color = backgroundimg.get(x, y)
                         p.stroke(color)
-                        //p.stroke(color, p.int(p.random(10)))
-                        p.circle(xcoord, ycoord, amplitude*10)
+                        p.stroke(color, p.int(p.random(10)))
+                        p.square(xcoord, ycoord, amplitude*10)
                     }
+                    //p.rotate(30+p.int(amplitude*10))
                 }
 
             //* END GRID CODE------------------------------------------------------------------*/
@@ -154,4 +157,4 @@ class Rotate extends React.Component {
     }
 }
 
-export default Rotate
+export default RotateGrid

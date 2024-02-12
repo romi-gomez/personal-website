@@ -1,5 +1,6 @@
 import * as React from "react"
-import { useEffect, useState} from "react"
+import { useEffect, useState, createContext} from "react"
+import artwork from "../data/artwork-data"
 import styled from "styled-components"
 import Layout from "../components/Layout"
 import FramesGallery from "../components/FramesGallery"
@@ -13,53 +14,21 @@ const GallerysContainer = styled.div`
   justify-content: center;
 `
 
-const work = [
-  [
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"},
-    {name: "Art", path: "../artwork/RotateGrid"}
-  ],
-  [
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-    {name: "website", path: "../artwork/RotateGrid"},
-  ],
-  [
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-    {name: "animation", path: "../artwork/RotateGrid"},
-  ]
-]
-
 const GalleryPage = () => {
+
   const displayFramesGallerys = (gallerys) => {
     return gallerys.map((gallery, index) => {
-      return <FramesGallery key={index} frames={gallery}/>
+      return (
+          <FramesGallery key={index} gallery={gallery}/>
+      )
     })
   }
 
   return (
     <Layout children = {
-      <GallerysContainer>
-        {displayFramesGallerys(work)}
-      </GallerysContainer>
+        <GallerysContainer>
+          {displayFramesGallerys(artwork)}
+        </GallerysContainer>
     }/>
   )
 }
