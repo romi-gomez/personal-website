@@ -15,7 +15,6 @@ const GalleryContainer = styled.div`
 const FramesGallery= ({gallery}) => {
 
   const displayFrames = (frames) => {
-    console.log("FRAMES::::::", frames)
     return frames.map((frame, key) => {
       return (
           <Frame id={key} key={key} content={frame} />
