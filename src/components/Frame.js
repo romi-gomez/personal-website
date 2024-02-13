@@ -27,15 +27,15 @@ const FramePreview = styled.div.attrs(props => ({
     color: white;
     transition: all 0.3s ease-in-out;
 `
-
 const FrameContainer = styled.div.attrs(props => ({
     style: {
         transform: props.$frameonfocus && props.$mouseposition && props.$isframeonhover ? 
         "rotateX(" + ((props.$mouseposition.y - props.$frameonfocus.frame.y - (props.$frameonfocus.frame.height/2))/props.$constraint) + "deg)" + 
         "rotateY(" + ((props.$mouseposition.x - props.$frameonfocus.frame.x - (props.$frameonfocus.frame.width/2))/props.$constraint) + "deg)" +
-        "scale(1.05)" + "translateZ(50px)": "",
+        "scale(1.15)" + "translateZ(50px)": "",
         background: props.$bgcolor,
-        "z-index": props.$isframeonhover ? 100000000 : -10000000,
+        zIndex: props.$isframeonhover ? 100000000 : 0,
+        boxShadow: props.$isframeonhover ? "0 0 40px 0 rgba(0,0,0,0.5)" : "0px 0px 20px 0px rgba(0,0,0,0.3)"
     },
   }))`
     position: absolute;
@@ -43,7 +43,6 @@ const FrameContainer = styled.div.attrs(props => ({
     left: 0;
     width:95%;
     height:95%;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
     border-radius: 5px;
     overflow: hidden;  
     transition: all 0.05s ease-in;
@@ -57,11 +56,11 @@ const FrameContainer = styled.div.attrs(props => ({
 
 
 export default function Frame({id, children, content, ...props}) {
-    const backgroundImage = require(`../images/gallery/${content.img}`).default
+    const backgroundImage = require(`../assets/images/gallery/${content.img}`).default
     const [frameOnFocus, setFrameOnFocus] = useState(null)
-    const [frameOnHover, setFrameOnHover] = useState(null)
-    const frameRef = useRef(null)
+    const [frameOnHover, setFrameOnHover] = useState(false)
     const [mousePosition, setMousePosition ] = useState({x: window.width/2, y: window.height/2})
+    const frameRef = useRef(null)
 
     const handleMouseMove = (event) => {
       //  Get mouse position relative to element
@@ -79,9 +78,12 @@ export default function Frame({id, children, content, ...props}) {
         setFrameOnHover(false)
     }
 
+    const handleFrameCkicked = () => {
+        console.log("FRAME CLICKED")
+    }
+
     useEffect(() => {
         setFrameOnFocus({id, frame: frameRef.current.getBoundingClientRect()})
-        console.log("PROPS.CONTENT", content)
     }, [props.mouseposition])
 
     
@@ -89,15 +91,15 @@ export default function Frame({id, children, content, ...props}) {
         <FrameWrapper 
             onMouseMove={handleMouseMove} 
             onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}> 
+            onMouseLeave={handleMouseLeave}
+            onClick={handleFrameCkicked}> 
             <FrameContainer
                 ref={frameRef} 
                 $isframeonhover={frameOnHover}
                 $frameonfocus={frameOnFocus}
                 $mouseposition={mousePosition}
                 $constraint={20}
-                $bgcolor={content.bgcolor}
-                $bgimg={backgroundImage}>
+                $bgcolor={content.bgcolor}>
                 <FramePreview
                     $isframeonhover={frameOnHover}>
                     <h2>{content.title}</h2>

@@ -4,16 +4,15 @@ import styled from "styled-components"
 import Frame from "../components/Frame"
 
 const GalleryContainer = styled.div`
-  position: relative; 
+  position: relative;   
   display: grid;
-  grid-template-columns: ${props => {return `repeat(${props.children.length}, 400px)`}};
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: 1fr;
-  width: ${props => {return (props.children.length * 400)+(props.children.length * 20)}}px;
+  width: 100%;
   height: 70%;
 `
 
 const FramesGallery= ({gallery}) => {
-
   const displayFrames = (frames) => {
     return frames.map((frame, key) => {
       return (

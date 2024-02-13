@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import "../helpers/p5sound_fix"
+import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/test01.mp3'
-import image from './images/garganta-06.jpg'
+import muladhara from './audio/Muladhara02.mp3'
+import image from './images/sacro-01.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -38,8 +38,10 @@ class RotateGrid extends React.Component {
         let beatDecayRate = 0.9995
         let beatState = 0
 
-        const columns = 10
-        const rows = 7
+        const columns = 120
+        const rows = 70
+
+        let frameCount = 0
 
 
         // Loads the music file into p5.js to play on click
@@ -69,15 +71,15 @@ class RotateGrid extends React.Component {
         p.draw = () => {                  
             // Use overal song volume to detect "beats"
             let amplitude = amp.getLevel()*100
-            console.log(amplitude)
+            frameCount++
 
             //* START BACKGROUND CODE------------------------------------------------------------------*/
 
                 p.noStroke()
-                p.tint(255,255, 255, p.random(0)); // Display at half opacity
+                p.tint(255,255, 255, p.random(3)); // Display at half opacity
                 p.noFill()
                 p.push()
-                    //p.rotate(30+p.int(amplitude*10))
+                    p.rotate(30+p.int(amplitude*10))
                     p.image(backgroundimg, (0), (0), imageWidth+amplitude*100, imageHeight+amplitude*20)      
                 p.pop()
 
@@ -98,23 +100,25 @@ class RotateGrid extends React.Component {
                 p.fill(255,p.random(10))
                 p.rect(0, 0, p.width, p.height)
 
-                console.log(p.width/columns, p.height/rows)
-
-                for (let x=p.width/columns+p.width/columns/2; x<p.width+100; x+=p.width/columns){
-                    for (let y=p.height/rows+p.height/rows/2; y<p.height+100; y+=p.height/rows){
+                for (let x=0; x<p.width+100; x+=p.width/columns){
+                    for (let y=0; y<p.height+100; y+=p.height/rows){
                         p.noFill()
                         const xcoord = x-p.width/2-p.width/columns
                         const ycoord = y-p.height/2-p.height/rows
                         let color = backgroundimg.get(x, y)
                         p.stroke(color)
-                        p.stroke(color, p.int(p.random(10)))
-                        p.square(xcoord, ycoord, amplitude*10)
+                        p.rect(xcoord, ycoord, amplitude*amplitude/10)
+                        p.rotate(360+p.int(amplitude*(p.random(0, amplitude/10))))
                     }
-                    //p.rotate(30+p.int(amplitude*10))
+                    p.rotate(360+p.int(amplitude*10))
                 }
 
             //* END GRID CODE------------------------------------------------------------------*/
 
+            if(frameCount%10===0){
+                times.push(amplitude)
+                times.shift()
+            }
         }
 
         // Toggles song on click
@@ -128,7 +132,7 @@ class RotateGrid extends React.Component {
 
         // Cycles color palette on Space Bar press
         p.keyPressed  =() => {
-            if (p.keyCode === 32) {                             // 32 is the keycode for SPACE_BAR
+            if (p.keyCode === 32) {  // 32 is the keycode for SPACE_BAR
                 
             }
             return false; // prevent default

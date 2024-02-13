@@ -3,7 +3,8 @@ import React from "react";
 import styled from "styled-components";
 
 const NavContainer = styled.nav`
-    z-index:10000;
+    position: relative;
+    z-index:10;
     background: pink;
     width: 100%;
 `

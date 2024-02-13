@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import "../helpers/p5sound_fix"
+import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
+import muladhara from './audio/Ajna01.mp3'
 
 const Frame = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
 `
-class JustTwoCircles extends React.Component {
+class SoundBlob extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -22,11 +22,17 @@ class JustTwoCircles extends React.Component {
             let canvasWidth = document.getElementsByClassName("p5Canvas")[0].offsetWidth
             let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
              
-            let bands = 1024
+            let bands = 1024*2
             let amp, fft, canvas, song
+
+            let r = p.random(255)
+            let g = p.random(255)
+            let b = p.random(255)
              
-            const columns = canvasWidth/100
-            const rows = canvasHeight/100
+            const columns = 100
+            const rows = 100
+
+            let count = 0;
 
              // Loads the music file into p5.js to play on click
              p.preload = () => {
@@ -52,7 +58,10 @@ class JustTwoCircles extends React.Component {
              }
      
              p.draw = () => {
-                p.fill(255, p.random(10))
+                count++             
+                p.frameRate(29)
+                let waveform = fft.waveform(bands/2)
+                p.fill(g,r,b, p.random(50))
                 p.noStroke()
                 p.rect(0, 0, canvasWidth, canvasHeight)
                 // Use overal song volume to detect "beats"
@@ -62,21 +71,40 @@ class JustTwoCircles extends React.Component {
                 const bass = fft.getEnergy(20, 500)
                 const high = fft.getEnergy(500, 10000)
                 
-                console.log(bass)
-                console.log(high)
 
-                p.strokeWeight(1)
-                p.noStroke()
-                p.fill(255,100,200, p.random(5))
-                p.circle(0, 0, bass*2)
-                p.fill(255,p.random(10))
+                p.stroke(r,g, b, bass); // Display at half opacity
 
-                p.stroke(0, p.random(200))
-                p.circle(0, 0, high*40)
+                // for (let i = 0; i < waveform.length; i++) {
+                //     let x = i-p.width/2
+                //     p.line(x,p.height/2, x, waveform[i]*200);
+                // }
+
+                const pointYPos = 0
+                
+                for(let i = 0; i < bands; i++){         
+                    let pointYbottom = pointYPos + waveform[i]*10
+                    let pointYtop = pointYbottom - waveform[i]*70
+                    let angleIncrement = p.TWO_PI / bands;
+                
+                    let circleRadius = 100 + waveform[i] * 100;
+                    let x = 0 + p.cos(angleIncrement * i) * circleRadius
+                    let y = 0 + p.sin(angleIncrement * i) * circleRadius
+                  
+                    p.line(0,0,x,y)
+                    p.circle(x, y,  waveform[i]*1 )
+                    p.circle(x-10, y-10, waveform[i]*10 )
+                    p.circle(x-20, y-20,  waveform[i]*5 )
+                    p.circle(x+10, y+10, waveform[i]*5 )
+                   }
+                
+                if(count===70){
+                    r = p.random(0,255)
+                    g = p.random(100,150)
+                    b = p.random(50,100)
+                    count = 0
+                }
             }
-     
              p.windowResized = () => {
-
             }
      
              // Toggles song on click
@@ -122,4 +150,4 @@ class JustTwoCircles extends React.Component {
 
 }
 
-export default JustTwoCircles
+export default SoundBlob

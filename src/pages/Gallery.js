@@ -8,13 +8,17 @@ import FramesGallery from "../components/FramesGallery"
 const GallerysContainer = styled.div`
   width:100%;
   height: 210%;
-  overflow: hidden;
-  display : flex;
+  padding: 0 2%;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
 `
 
 const GalleryPage = () => {
+  const [frameOpened, setFrameOpened] = useState(null)
+  const value = {frameOpened, setFrameOpened}
+  const OpenedFrameContext = createContext()
 
   const displayFramesGallerys = (gallerys) => {
     return gallerys.map((gallery, index) => {
@@ -26,9 +30,11 @@ const GalleryPage = () => {
 
   return (
     <Layout children = {
-        <GallerysContainer>
-          {displayFramesGallerys(artwork)}
-        </GallerysContainer>
+        <OpenedFrameContext.Provider value={value} >
+          <GallerysContainer>
+            {displayFramesGallerys(artwork)}
+          </GallerysContainer>
+        </OpenedFrameContext.Provider>
     }/>
   )
 }
