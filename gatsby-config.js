@@ -7,19 +7,20 @@ module.exports = {
     description: `A personal website for Romi Gomez`,
     twitterHandle: "ibaslogic",
     author: "Romi Gomez",
+    siteUrl: "https://romigomez.com",
     url: "https://romigomez.com"
    },
   plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/icon.png"
+      "icon": "src/assets/images/icon.png"
     }
   }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", 
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
-      "path": "./src/images/"
+      "path": "./src/assets/images/"
     },
     __key: "images"
   },
@@ -27,7 +28,7 @@ module.exports = {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `audio`,
-      path: `./src/artwork/audio/`,
+      path: `./src/assets/artwork/audio/`,
     },
     __key: "audio"
   }

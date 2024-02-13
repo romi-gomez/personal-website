@@ -12,11 +12,11 @@ const GalleryContainer = styled.div`
   height: 70%;
 `
 
-const FramesGallery= ({gallery}) => {
+const FramesGallery= ({gallery, setFrameOpened}) => {
   const displayFrames = (frames) => {
     return frames.map((frame, key) => {
       return (
-          <Frame id={key} key={key} content={frame} />
+          <Frame id={key} key={key} content={frame} setFrameOpened={setFrameOpened} />
       )
     })
   }

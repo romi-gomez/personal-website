@@ -6,7 +6,6 @@ import Footer from "./Footer"
 
 const LayoutContainer = styled.main`
   display: flex;
-  padding: 2% 0;
   align-items: flex-start;
   justify-content: center;
   width:100%;
