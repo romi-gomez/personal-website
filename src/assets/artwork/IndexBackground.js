@@ -54,12 +54,12 @@ class SoundMountains extends React.Component {
 
                 let lastX,lastY 
 	
-                p.translate(p.width/4,p.height/4)
+                p.translate(p.width/2,p.height/10)
                 p.rotate(p.sin(p.frameCount/20)/50)
                 p.rotate(p.frameCount/500)
                 p.scale(p.pow(1/p.frameCount,0.108)-p.frameCount/10000000)
-                p.translate(-p.width/7,-p.width/7)
-                p.translate(-p.width/4,0)
+                p.translate(-p.width/8,-p.width/8)
+                p.translate(-p.width/6,0)
 	
                 for(let y=0;y<p.width;y+=p.random(10,100)){
                     let ang = p.frameCount/100
