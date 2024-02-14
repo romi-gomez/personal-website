@@ -61,9 +61,7 @@ class JustTwoCircles extends React.Component {
 
                 const bass = fft.getEnergy(20, 500)
                 const high = fft.getEnergy(500, 10000)
-                
-                console.log(bass)
-                console.log(high)
+                const mid = fft.getEnergy(1000, 4000)
 
                 p.strokeWeight(1)
                 p.noStroke()
@@ -86,7 +84,7 @@ class JustTwoCircles extends React.Component {
                          song.pause()
                      }
                  } else {
-                     song.loop()
+                     song.play()
                  }
             }
      

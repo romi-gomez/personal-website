@@ -4,7 +4,7 @@ import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
 import muladhara from './audio/Muladhara01.mp3'
-import image from '.ß/images/garganta-03.jpg'
+import image from './images/garganta-03.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -94,7 +94,7 @@ class Points extends React.Component {
             if (song && song.isPlaying()) {
                     song.pause()
             } else {
-                song.loop()
+                song.play()
             }
         }
 

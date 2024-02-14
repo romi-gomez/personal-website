@@ -2,7 +2,7 @@ const artwork = [
     [
       {
         group: "creativeCoding", 
-        title: "RotateGrid",
+        title: "Grid",
         tech: "P5",
         img: "rotateGrid.png", 
         bgcolor: "blue",
@@ -10,7 +10,7 @@ const artwork = [
       },
       {
         group: "creativeCoding", 
-        title: "RotateGrid",
+        title: "JustTwoCircles",
         tech: "P5",
         img: "rotateGrid.png", 
         bgcolor: "yellow",
@@ -18,7 +18,7 @@ const artwork = [
       },
       {
         group: "creativeCoding",  
-        title: "RotateGrid",
+        title: "Points",
         tech: "P5",
         img: "rotateGrid.png", 
         bgcolor: "green",
@@ -31,27 +31,31 @@ const artwork = [
         img: "rotateGrid.png", 
         bgcolor: "pink",
         path: "../artwork/RotateGrid"
-      }
-    ],
-    [
+      },
       {
-        group: "website",  
-        title: "RotateGrid",
+        group: "creativeCoding", 
+        title: "SoundBlob",
         tech: "P5",
         img: "rotateGrid.png", 
-        bgcolor: "green",
+        bgcolor: "pink",
         path: "../artwork/RotateGrid"
-    },
-    ],
-    [
+      },
       {
-        group: "video animation",  
-        title: "RotateGrid",
+        group: "creativeCoding", 
+        title: "SoundMountains",
         tech: "P5",
         img: "rotateGrid.png", 
-        bgcolor: "lavanda",
+        bgcolor: "pink",
         path: "../artwork/RotateGrid"
-    },
+      },
+      {
+        group: "creativeCoding", 
+        title: "SoundWave",
+        tech: "P5",
+        img: "rotateGrid.png", 
+        bgcolor: "pink",
+        path: "../artwork/RotateGrid"
+      },
     ]
   ]
 

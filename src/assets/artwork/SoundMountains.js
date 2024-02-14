@@ -97,7 +97,7 @@ class SoundMountains extends React.Component {
                          song.pause()
                      }
                  } else {
-                     song.loop()
+                     song.play()
                  }
             }
      

@@ -69,7 +69,6 @@ class RotateGrid extends React.Component {
         p.draw = () => {                  
             // Use overal song volume to detect "beats"
             let amplitude = amp.getLevel()*100
-            console.log(amplitude)
 
             //* START BACKGROUND CODE------------------------------------------------------------------*/
 
@@ -98,8 +97,6 @@ class RotateGrid extends React.Component {
                 p.fill(255,p.random(10))
                 p.rect(0, 0, p.width, p.height)
 
-                console.log(p.width/columns, p.height/rows)
-
                 for (let x=p.width/columns+p.width/columns/2; x<p.width+100; x+=p.width/columns){
                     for (let y=p.height/rows+p.height/rows/2; y<p.height+100; y+=p.height/rows){
                         p.noFill()
@@ -122,7 +119,7 @@ class RotateGrid extends React.Component {
             if (song && song.isPlaying()) {
                     song.pause()
             } else {
-                song.loop()
+                song.play()
             }
         }
 

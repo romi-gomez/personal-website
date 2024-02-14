@@ -94,7 +94,7 @@ class Soundwave extends React.Component {
             if (song && song.isPlaying()) {
                     song.pause()
             } else {
-                song.loop()
+                song.play()
             }
         }
 

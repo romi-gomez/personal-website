@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import Artwork from './Artwork'
 
 const Overlay = styled.div.attrs(props => ({
     style: {
-        visibility: props.$isFrameOpened ? "visible" : "hidden",
+        visibility: props.$frameOpened ? "visible" : "hidden",
       },
     }))`
     position: fixed;
@@ -15,16 +16,25 @@ const Overlay = styled.div.attrs(props => ({
     z-index: 20000000;
   `
 
+  const ArtworkWrapper = styled.div`
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+    top: 5vh;
+    left: 5vw;
+    background: white;
+  `
+
   const CloseOverlayButton = styled.div.attrs(props => ({
     style: {
-        visibility: props.$isFrameOpened ? "visible" : "hidden",
+        visibility: props.$frameOpened ? "visible" : "hidden",
       },
     }))`
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 4%;
-    right: 4%;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    top: 2%;
+    right: 2%;
     background: yellow;
     color: black;
     z-index: 20000001;
@@ -32,16 +42,21 @@ const Overlay = styled.div.attrs(props => ({
   `
 
 
-function GalleryOverlay({isFrameOpened, setFrameOpened}) {
+function GalleryOverlay({frameOpened, setFrameOpened}) {
 
     const handleCloseOverlay = () => {
+        document.getElementsByTagName('canvas')[0].remove()
         setFrameOpened(null)
     }
 
   return (
     <>
-        <CloseOverlayButton $isFrameOpened = {isFrameOpened} onClick={handleCloseOverlay}>Close</CloseOverlayButton>
-        <Overlay $isFrameOpened = {isFrameOpened}/>
+        <CloseOverlayButton $frameOpened = {frameOpened} onClick={handleCloseOverlay}>Close</CloseOverlayButton>
+        <Overlay $frameOpened = {frameOpened !== null}>
+          <ArtworkWrapper>
+            <Artwork artwork={frameOpened} /> 
+          </ArtworkWrapper>
+        </Overlay>
     </>
   )
 }

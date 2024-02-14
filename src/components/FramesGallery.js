@@ -1,15 +1,14 @@
 import * as React from "react"
-import { useContext } from "react"
 import styled from "styled-components"
 import Frame from "../components/Frame"
 
 const GalleryContainer = styled.div`
   position: relative;   
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-rows:  1fr 1fr;
   width: 100%;
-  height: 70%;
+  height: 100%;
 `
 
 const FramesGallery= ({gallery, setFrameOpened}) => {

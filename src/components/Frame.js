@@ -33,6 +33,7 @@ const FrameContainer = styled.div.attrs(props => ({
         "rotateX(" + ((props.$mouseposition.y - props.$frameonfocus.frame.y - (props.$frameonfocus.frame.height/2))/props.$constraint) + "deg)" + 
         "rotateY(" + ((props.$mouseposition.x - props.$frameonfocus.frame.x - (props.$frameonfocus.frame.width/2))/props.$constraint) + "deg)" +
         "scale(1.15) translateZ(50px)": "",
+        cursor: props.$isframeonhover ? "pointer" : "default",
         background: props.$bgcolor,
         zIndex: props.$isframeonhover ? 10000 : 0,
         boxShadow: props.$isframeonhover ? "0 0 40px 0 rgba(0,0,0,0.5)" : "0px 0px 20px 0px rgba(0,0,0,0.3)"

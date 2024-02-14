@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara02.mp3'
+import muladhara from './audio/Muladhara01.mp3'
 import image from './images/sacro-01.jpg'
 
 const Frame = styled.div`
@@ -55,6 +55,7 @@ class RotateGrid extends React.Component {
         p.setup = () => {
            p.pixelDensity(2.0)
 
+            p.setAttributes('willReadFrequently', true)
             canvas = p.createCanvas(canvasWidth, canvasHeight, p.WEBGL)
             canvas.mouseClicked(p.handleClick)
 
@@ -126,7 +127,7 @@ class RotateGrid extends React.Component {
             if (song && song.isPlaying()) {
                     song.pause()
             } else {
-                song.loop()
+                song.play()
             }
         }
 
