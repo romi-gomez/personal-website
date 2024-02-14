@@ -4,11 +4,11 @@ import Frame from "../components/Frame"
 
 const GalleryContainer = styled.div`
   position: relative;   
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  grid-template-rows:  1fr 1fr;
+  display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: space-around;
 `
 
 const FramesGallery= ({gallery, setFrameOpened}) => {
@@ -21,7 +21,7 @@ const FramesGallery= ({gallery, setFrameOpened}) => {
   }
 
   return (
-      <GalleryContainer>
+      <GalleryContainer $width={gallery.lenght}>
         {displayFrames(gallery)}
       </GalleryContainer>
   )

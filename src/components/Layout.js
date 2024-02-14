@@ -5,19 +5,21 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 
 const LayoutContainer = styled.main`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  color: #F3F3F3;
+  position: relative;
+  display: block;
   width:100%;
+  background: rgb(51,51,51);
+  background: radial-gradient(circle, rgba(51,51,51,1) 0%, rgba(0,0,0,1) 94%, rgba(29,29,29,1) 100%);
 `
 
 const Layout = ({children}) => {
   return (
-    <>
-      <Navbar />
-      <LayoutContainer >{children}</LayoutContainer>
-      <Footer />
-    </>
+      <LayoutContainer >
+        <Navbar />
+        {children}
+        <Footer />
+      </LayoutContainer>
   )
 }
 export default Layout

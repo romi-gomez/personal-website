@@ -5,7 +5,7 @@ import styled from "styled-components";
 const FrameWrapper = styled.div`
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;

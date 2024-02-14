@@ -5,17 +5,30 @@ import styled from "styled-components";
 const FooterContainer = styled.footer`
     position: fixed;
     bottom: 0;
-    background: lightblue;
+    left: 0;
     width: 100%;
+    color: #F3F3F3;
+    background-color: #1A1A1A;
+`
+const FooterContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: right;
+    padding: .5rem;
+
+    p {
+    }
 `
 
 export default function Navbar() {
     return (
         <FooterContainer>
-            <div className="links">
-                <Link to="/">Home</Link>
-                <Link to="/gallery">Gallery</Link>
-            </div>
+            <FooterContent>
+                <p>
+                    Made with ❤️ by Romi Gomez
+                </p>
+            </FooterContent>
         </FooterContainer>
     )
 }
