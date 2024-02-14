@@ -31,15 +31,9 @@ class RotateGrid extends React.Component {
 
         let bands = 1024
         let amp, fft, canvas, song
-        let times = [0,0,0,0,0,0,0]
 
-        let beatThreshold = 0.16
-        let beatCutoff = 0
-        let beatDecayRate = 0.9995
-        let beatState = 0
-
-        const columns = 10
-        const rows = 7
+        const columns = 100
+        const rows = 70
 
 
         // Loads the music file into p5.js to play on click

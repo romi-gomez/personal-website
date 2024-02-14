@@ -18,10 +18,10 @@ const Overlay = styled.div.attrs(props => ({
 
   const ArtworkWrapper = styled.div`
     position: absolute;
-    width: 90vw;
-    height: 90vh;
-    top: 5vh;
-    left: 5vw;
+    width: 80vw;
+    height: 80vh;
+    top: 10vh;
+    left: 10vw;
     background: white;
   `
 
@@ -33,8 +33,8 @@ const Overlay = styled.div.attrs(props => ({
     position: fixed;
     width: 30px;
     height: 30px;
-    top: 2%;
-    right: 2%;
+    top: 10%;
+    right: 5%;
     background: yellow;
     color: black;
     z-index: 20000001;

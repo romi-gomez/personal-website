@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
-import image from './images/sacro-01.jpg'
+import muladhara from './audio/Sahasara01.mp3'
+import image from './images/coronilla02.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -25,8 +25,8 @@ class RotateGrid extends React.Component {
         let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
         
         let backgroundimg
-        let imageWidth= window.innerWidth*1.5
-        let imageHeight= window.innerHeight*1.5
+        let imageWidth= window.innerWidth*1.2
+        let imageHeight= window.innerHeight*1.2
         let sizeModifier = 1
 
         let bands = 1024
@@ -38,8 +38,8 @@ class RotateGrid extends React.Component {
         let beatDecayRate = 0.9995
         let beatState = 0
 
-        const columns = 120
-        const rows = 70
+        const columns = 150
+        const rows = 100
 
         let frameCount = 0
 
@@ -108,8 +108,9 @@ class RotateGrid extends React.Component {
                         const ycoord = y-p.height/2-p.height/rows
                         let color = backgroundimg.get(x, y)
                         p.stroke(color)
-                        p.rect(xcoord, ycoord, amplitude*amplitude/10)
-                        p.rotate(360+p.int(amplitude*(p.random(0, amplitude/10))))
+                        p.strokeWeight(p.int(amplitude/5))
+                        p.circle(xcoord, ycoord, amplitude*amplitude)
+                        //p.rotate(360+p.int(amplitude*(p.random(0, amplitude/10))))
                     }
                     p.rotate(360+p.int(amplitude*10))
                 }
