@@ -53,7 +53,7 @@ const FramePreview = styled.div.attrs(props => ({
         font-size: 1em;
         margin: 0;
         left: 10px;
-        bottom: 10px;
+        bottom: 30px;
         text-orientation: upright;
     }
 
@@ -95,7 +95,16 @@ const FrameContainer = styled.div.attrs(props => ({
         object-fit: cover;
     }
     `
-
+const FrameInstructions = styled.p`
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: .7rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 5px;
+`
 
 export default function Frame({id, children, content, setFrameOpened, ...props}) {
     const [frameOnFocus, setFrameOnFocus] = useState(null)
@@ -149,6 +158,7 @@ export default function Frame({id, children, content, setFrameOpened, ...props})
                     <h3>{content.group}</h3>
                     <h4>{content.tech}</h4>
                     <img className="previewGrid" src={previewGrid} alt="preview grid"/>
+                    <FrameInstructions $visibility={isFrameOnHover}>Click to see live</FrameInstructions>
                 </FramePreview>
                 <img src={isFrameOnHover ? backgroundGif : backgroundImage} alt={content.title}/>    
             </FrameContainer>
