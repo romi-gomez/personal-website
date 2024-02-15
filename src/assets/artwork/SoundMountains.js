@@ -59,7 +59,7 @@ class SoundMountains extends React.Component {
                 count++             
                 p.frameRate(29)
                 let waveform = fft.waveform(bands/2)
-                p.fill(b,g,r, p.random(50))
+                p.fill(g,b,r, p.random(10,30))
                 p.noStroke()
                 p.rect(0, 0, canvasWidth, canvasHeight)
                 // Use overal song volume to detect "beats"
@@ -70,18 +70,24 @@ class SoundMountains extends React.Component {
                 const high = fft.getEnergy(500, 10000)
                 
 
-                p.stroke(r,g, b, bass); // Display at half opacity
+                p.stroke(r,g, b, p.random(bass)); // Display at half opacity
+
+                // for (let i = 0; i < waveform.length; i++) {
+                //     let x = i-p.width/2
+                //     p.line(x,p.height/2, x, waveform[i]*200);
+                // }
+                
+                p.stroke(r,b, g, p.random(bass)); // Display at half opacity
 
                 for (let i = 0; i < waveform.length; i++) {
                     let x = i-p.width/2
-                    p.line(x,p.height/2, x, waveform[i]*200);
+                    p.line(x,p.height-p.height/4, x, waveform[i]*300);
                 }
                 
-                if(count===100){
-                    r = p.random(0,255)
-                    g = p.random(100,150)
+                if(bass>165){
+                    r = p.random(0,50)
+                    g = p.random(50,255)
                     b = p.random(50,100)
-                    count = 0
                 }
                 
             }

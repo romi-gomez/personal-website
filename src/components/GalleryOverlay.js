@@ -43,6 +43,7 @@ const Overlay = styled.div.attrs(props => ({
 
 
 function GalleryOverlay({frameOpened, setFrameOpened}) {
+  console.log("GALLERY OVERLAY FRAME OPENED",frameOpened)
 
     const handleCloseOverlay = () => {
         document.getElementsByTagName('canvas')[0].remove()

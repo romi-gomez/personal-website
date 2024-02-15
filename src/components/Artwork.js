@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Grid from '../assets/artwork/Grid'
-import JustTwoCircles from '../assets/artwork/JustTwoCircles'
-import Points from '../assets/artwork/Points'
+import JustSomeCircles from '../assets/artwork/JustSomeCircles'
 import RotateGrid from '../assets/artwork/RotateGrid'
 import SoundBlob from '../assets/artwork/SoundBlob'
 import SoundMountains from '../assets/artwork/SoundMountains'
-import SoundWave from '../assets/artwork/SoundWave'
 
 
 const ArtworkContainer = styled.div`
@@ -20,18 +18,14 @@ const Artwork = ({artwork}) => {
     switch (artwork.title) {
       case 'Grid':
         return <Grid />
-      case 'JustTwoCircles':
-        return <JustTwoCircles />
-      case 'Points':
-        return <Points />
-      case 'RotateGrid':
+      case 'SomeCircles':
+        return <JustSomeCircles />
+      case 'Mandala':
         return <RotateGrid />
-      case 'SoundBlob':
+      case 'Blob':
         return <SoundBlob />
-      case 'SoundMountains':
+      case 'Mountains':
         return <SoundMountains />
-      case 'SoundWave':
-        return <SoundWave />
       default:
         return <Grid />
     }

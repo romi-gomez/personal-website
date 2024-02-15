@@ -61,7 +61,7 @@ class SoundBlob extends React.Component {
                 count++             
                 p.frameRate(29)
                 let waveform = fft.waveform(bands/2)
-                p.fill(g,r,b, p.random(50))
+                p.fill(g,r,b, p.random(30))
                 p.noStroke()
                 p.rect(0, 0, canvasWidth, canvasHeight)
                 // Use overal song volume to detect "beats"
@@ -86,21 +86,21 @@ class SoundBlob extends React.Component {
                     let pointYtop = pointYbottom - waveform[i]*70
                     let angleIncrement = p.TWO_PI / bands;
                 
-                    let circleRadius = 100 + waveform[i] * 100;
+                    let circleRadius = 200 + waveform[i] * 300;
                     let x = 0 + p.cos(angleIncrement * i) * circleRadius
                     let y = 0 + p.sin(angleIncrement * i) * circleRadius
                   
                     p.line(0,0,x,y)
                     p.circle(x, y,  waveform[i]*1 )
-                    p.circle(x-10, y-10, waveform[i]*10 )
-                    p.circle(x-20, y-20,  waveform[i]*5 )
+                    p.circle(x-10, y-10, waveform[i]*15 )
+                    p.circle(x-20, y-20,  waveform[i]*10 )
                     p.circle(x+10, y+10, waveform[i]*5 )
                    }
                 
-                if(count===70){
+                if(bass >= 165){
                     r = p.random(0,255)
-                    g = p.random(100,150)
-                    b = p.random(50,100)
+                    g = p.random(50,150)
+                    b = p.random(100,200)
                     count = 0
                 }
             }

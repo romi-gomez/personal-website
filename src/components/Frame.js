@@ -57,11 +57,13 @@ const FrameContainer = styled.div.attrs(props => ({
 
 
 export default function Frame({id, children, content, setFrameOpened, ...props}) {
-    const backgroundImage = require(`../assets/images/gallery/${content.img}`).default
     const [frameOnFocus, setFrameOnFocus] = useState(null)
     const [isFrameOnHover, setIsFrameOnHover] = useState(false)
     const [mousePosition, setMousePosition ] = useState({x: 0, y: 0})
     const frameRef = useRef(null)
+
+    const backgroundImage = require(`../assets/images/gallery/${content.img}`).default
+    const backgroundGif = require(`../assets/images/gallery/${content.gif}`).default
 
     const handleMouseMove = (event) => {
       //  Get mouse position relative to element
@@ -106,7 +108,7 @@ export default function Frame({id, children, content, setFrameOpened, ...props})
                     <h3>{content.tech}</h3>
                     <h4>{content.year}</h4>
                 </FramePreview>
-                <img src={backgroundImage} alt={content.title}/>    
+                <img src={isFrameOnHover ? backgroundGif : backgroundImage} alt={content.title}/>    
             </FrameContainer>
         </FrameWrapper>
     )
