@@ -31,14 +31,21 @@ const Overlay = styled.div.attrs(props => ({
       },
     }))`
     position: fixed;
-    width: 30px;
-    height: 30px;
-    top: 10%;
+    top: 7%;
     right: 5%;
-    background: yellow;
-    color: black;
+    padding: 5px;
     z-index: 20000001;
     cursor: pointer;
+    font-size: .7rem;
+    color: white;
+
+    &::before {
+        content: 'X';
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
   `
 
 

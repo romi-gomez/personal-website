@@ -1,7 +1,7 @@
 const artwork = [
     [
       {
-        group: "creativeCoding", 
+       group: "creative coding", 
         title: "Grid",
         tech: "P5",
         img: "grid.png", 
@@ -10,7 +10,7 @@ const artwork = [
         path: "../artwork/Grid"
       },
       {
-        group: "creativeCoding", 
+       group: "creative coding", 
         title: "SomeCircles",
         tech: "P5",
         img: "justSomeCircles.png", 
@@ -19,7 +19,7 @@ const artwork = [
         path: "../artwork/JustSomeCircles"
       },
       {
-        group: "creativeCoding", 
+        group: "creative coding", 
         title: "Mandala",
         tech: "P5",
         img: "rotateGrid.png", 
@@ -28,7 +28,7 @@ const artwork = [
         path: "../artwork/RotateGrid"
       },
       {
-        group: "creativeCoding", 
+       group: "creative coding", 
         title: "Blob",
         tech: "P5",
         img: "soundBlob.png", 
@@ -37,7 +37,7 @@ const artwork = [
         path: "../artwork/SoundBlob"
       },
       {
-        group: "creativeCoding", 
+       group: "creative coding", 
         title: "Mountains",
         tech: "P5",
         img: "soundMountains.png", 

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState, useRef} from "react";
 import styled from "styled-components";
+import previewGrid from "../assets/images/gallery/previewGrid.svg"
 
 const FrameWrapper = styled.div`
     position: relative;
@@ -26,6 +27,47 @@ const FramePreview = styled.div.attrs(props => ({
     padding: 10px;
     color: white;
     transition: all 0.3s ease-in-out;
+
+    .previewGrid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        transform: translateZ(300px) scale(1.05);
+        opacity: 0.5;
+    }
+
+    h2 {
+        position: absolute;
+        font-size: 2em;
+        margin: 0;
+        right: 10px;
+        top: 10px;
+        text-orientation: upright;
+
+    }
+
+    h3 {
+        position: absolute;
+        font-size: 1em;
+        margin: 0;
+        left: 10px;
+        bottom: 10px;
+        text-orientation: upright;
+    }
+
+    h4 {
+        position: absolute;
+        font-size: 7em;
+        margin: 0;
+        right: -50px;
+        bottom: 10px;
+        text-orientation: upright;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+    
 `
 const FrameContainer = styled.div.attrs(props => ({
     style: {
@@ -45,7 +87,6 @@ const FrameContainer = styled.div.attrs(props => ({
     width:95%;
     height:95%;
     border-radius: 5px;
-    overflow: hidden;  
     transition: all 0.05s ease-in;
     
     img {
@@ -105,8 +146,9 @@ export default function Frame({id, children, content, setFrameOpened, ...props})
                 <FramePreview
                     $isframeonhover={isFrameOnHover}>
                     <h2>{content.title}</h2>
-                    <h3>{content.tech}</h3>
-                    <h4>{content.year}</h4>
+                    <h3>{content.group}</h3>
+                    <h4>{content.tech}</h4>
+                    <img className="previewGrid" src={previewGrid} alt="preview grid"/>
                 </FramePreview>
                 <img src={isFrameOnHover ? backgroundGif : backgroundImage} alt={content.title}/>    
             </FrameContainer>
