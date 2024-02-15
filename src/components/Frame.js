@@ -53,7 +53,7 @@ const FramePreview = styled.div.attrs(props => ({
         font-size: 1em;
         margin: 0;
         left: 10px;
-        bottom: 30px;
+        bottom: 10px;
         text-orientation: upright;
     }
 
@@ -97,8 +97,8 @@ const FrameContainer = styled.div.attrs(props => ({
     `
 const FrameInstructions = styled.p`
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    top: 12%;
+    right:10px;
     font-size: .7rem;
     color: white;
     background: rgba(0, 0, 0, 0.5);
