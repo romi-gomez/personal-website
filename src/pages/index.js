@@ -27,8 +27,9 @@ const TextWrapper = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 20;
-  padding: 7% 10%;
+  z-index: 10;
+  padding: 15% 5%;
+  overflow-y:scroll;
 `
 
 const Title = styled.h1`

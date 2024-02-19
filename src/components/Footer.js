@@ -9,6 +9,7 @@ const FooterContainer = styled.footer`
     width: 100%;
     color: #F3F3F3;
     background-color: #1A1A1A;
+    z-index: 200;
 `
 const FooterContent = styled.div`
     display: flex;
