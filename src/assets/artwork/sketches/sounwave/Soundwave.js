@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Sahasara01.mp3'
-import image from './images/coronilla02.jpg'
+import muladhara from '../assets/audio/Muladhara01.mp3'
+import image from '../assets/images/tercerojo-01.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -12,7 +12,7 @@ const Frame = styled.div`
     overflow: hidden;
 `
 
-class RotateGrid extends React.Component {
+class Soundwave extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -25,8 +25,8 @@ class RotateGrid extends React.Component {
         let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
         
         let backgroundimg
-        let imageWidth= window.innerWidth*1.2
-        let imageHeight= window.innerHeight*1.2
+        let imageWidth= window.innerWidth*0.7
+        let imageHeight= window.innerHeight*0.7
         let sizeModifier = 1
 
         let bands = 1024
@@ -37,11 +37,6 @@ class RotateGrid extends React.Component {
         let beatCutoff = 0
         let beatDecayRate = 0.9995
         let beatState = 0
-
-        const columns = 150
-        const rows = 100
-
-        let frameCount = 0
 
 
         // Loads the music file into p5.js to play on click
@@ -55,7 +50,6 @@ class RotateGrid extends React.Component {
         p.setup = () => {
            p.pixelDensity(2.0)
 
-            p.setAttributes('willReadFrequently', true)
             canvas = p.createCanvas(canvasWidth, canvasHeight, p.WEBGL)
             canvas.mouseClicked(p.handleClick)
 
@@ -71,56 +65,28 @@ class RotateGrid extends React.Component {
 
         p.draw = () => {                  
             // Use overal song volume to detect "beats"
-            let amplitude = amp.getLevel()*100
-            frameCount++
+            let amplitude = amp.getLevel()*200
+            p.tint(p.random(255),p.random(105), p.random(255), 1+amplitude/20); // Display at half opacity
+            p.image(backgroundimg, (0), (0), imageWidth+amplitude, imageHeight+amplitude)      
 
-            //* START BACKGROUND CODE------------------------------------------------------------------*/
+            p.stroke(255, 255, 255)
+            p.noFill()
 
-                p.noStroke()
-                p.tint(255,255, 255, p.random(3)); // Display at half opacity
-                p.noFill()
-                p.push()
-                    p.rotate(30+p.int(amplitude*10))
-                    p.image(backgroundimg, (0), (0), imageWidth+amplitude*100, imageHeight+amplitude*20)      
-                p.pop()
+            // p.push()
+            // p.rotate(20+p.int(amplitude*10))
+            // p.rect(0, 0, amplitude*5, amplitude*5)
+            // p.pop()
 
-                if(imageWidth>canvasWidth*3){
-                    sizeModifier=-1
-                }
-
-                if(imageWidth<canvasWidth*2){
-                    sizeModifier=1
-                }
-                
-                imageWidth+=sizeModifier
-                imageHeight+=sizeModifier
-
-            //* END BACKGROUND CODE------------------------------------------------------------------*/
-
-            //* START GRID CODE------------------------------------------------------------------*/
-                p.fill(255,p.random(10))
-                p.rect(0, 0, p.width, p.height)
-
-                for (let x=0; x<p.width+100; x+=p.width/columns){
-                    for (let y=0; y<p.height+100; y+=p.height/rows){
-                        p.noFill()
-                        const xcoord = x-p.width/2-p.width/columns
-                        const ycoord = y-p.height/2-p.height/rows
-                        let color = backgroundimg.get(x, y)
-                        p.stroke(color)
-                        p.strokeWeight(p.int(amplitude/5))
-                        p.circle(xcoord, ycoord, amplitude*amplitude)
-                        //p.rotate(360+p.int(amplitude*(p.random(0, amplitude/10))))
-                    }
-                    p.rotate(360+p.int(amplitude*10))
-                }
-
-            //* END GRID CODE------------------------------------------------------------------*/
-
-            if(frameCount%10===0){
-                times.push(amplitude)
-                times.shift()
+            if(imageWidth>canvasWidth*2){
+                sizeModifier=-1
             }
+
+            if(imageWidth<canvasWidth){
+                sizeModifier=1
+            }
+            
+            imageWidth+=sizeModifier
+            imageHeight+=sizeModifier
         }
 
         // Toggles song on click
@@ -134,7 +100,7 @@ class RotateGrid extends React.Component {
 
         // Cycles color palette on Space Bar press
         p.keyPressed  =() => {
-            if (p.keyCode === 32) {  // 32 is the keycode for SPACE_BAR
+            if (p.keyCode === 32) {                             // 32 is the keycode for SPACE_BAR
                 
             }
             return false; // prevent default
@@ -163,4 +129,4 @@ class RotateGrid extends React.Component {
     }
 }
 
-export default RotateGrid
+export default Soundwave

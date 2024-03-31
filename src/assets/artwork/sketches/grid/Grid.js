@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import "./helpers/p5sound_fix"
+import "../assets/helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
-import image from './images/garganta-03.jpg'
+import muladhara from '../assets/audio/Muladhara03.mp3'
+import image from '../assets/images/garganta-06.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -12,7 +12,7 @@ const Frame = styled.div`
     overflow: hidden;
 `
 
-class Points extends React.Component {
+class RotateGrid extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -25,18 +25,15 @@ class Points extends React.Component {
         let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
         
         let backgroundimg
-        let imageWidth= window.innerWidth*0.7
-        let imageHeight= window.innerHeight*0.7
+        let imageWidth= window.innerWidth*1.5
+        let imageHeight= window.innerHeight*1.5
         let sizeModifier = 1
 
         let bands = 1024
         let amp, fft, canvas, song
-        let times = [0,0,0,0,0,0,0]
 
-        let beatThreshold = 0.16
-        let beatCutoff = 0
-        let beatDecayRate = 0.9995
-        let beatState = 0
+        const columns = 100
+        const rows = 70
 
 
         // Loads the music file into p5.js to play on click
@@ -65,28 +62,50 @@ class Points extends React.Component {
 
         p.draw = () => {                  
             // Use overal song volume to detect "beats"
-            let amplitude = amp.getLevel()*200
-            p.tint(p.random(255),p.random(105), p.random(255), 1+amplitude/20); // Display at half opacity
+            let amplitude = amp.getLevel()*100
 
-            p.stroke(255, 255, 255)
-            p.noFill()
+            //* START BACKGROUND CODE------------------------------------------------------------------*/
 
-            p.push()
-            p.rotate(20+p.int(amplitude*10))
-            p.image(backgroundimg, (0), (0), imageWidth+amplitude, imageHeight+amplitude)      
+                p.noStroke()
+                p.tint(255,255, 255, p.random(0)); // Display at half opacity
+                p.noFill()
+                p.push()
+                    //p.rotate(30+p.int(amplitude*10))
+                    p.image(backgroundimg, (0), (0), imageWidth+amplitude*100, imageHeight+amplitude*20)      
+                p.pop()
 
-            p.pop()
+                if(imageWidth>canvasWidth*3){
+                    sizeModifier=-1
+                }
 
-            if(imageWidth>canvasWidth*2){
-                sizeModifier=-2
-            }
+                if(imageWidth<canvasWidth*2){
+                    sizeModifier=1
+                }
+                
+                imageWidth+=sizeModifier
+                imageHeight+=sizeModifier
 
-            if(imageWidth<canvasWidth){
-                sizeModifier=2
-            }
-            
-            imageWidth+=sizeModifier
-            imageHeight+=sizeModifier
+            //* END BACKGROUND CODE------------------------------------------------------------------*/
+
+            //* START GRID CODE------------------------------------------------------------------*/
+                p.fill(255,p.random(10))
+                p.rect(0, 0, p.width, p.height)
+
+                for (let x=p.width/columns+p.width/columns/2; x<p.width+100; x+=p.width/columns){
+                    for (let y=p.height/rows+p.height/rows/2; y<p.height+100; y+=p.height/rows){
+                        p.noFill()
+                        const xcoord = x-p.width/2-p.width/columns
+                        const ycoord = y-p.height/2-p.height/rows
+                        let color = backgroundimg.get(x, y)
+                        p.stroke(color)
+                        p.stroke(color, p.int(p.random(10)))
+                        p.square(xcoord, ycoord, amplitude*10)
+                    }
+                    //p.rotate(30+p.int(amplitude*10))
+                }
+
+            //* END GRID CODE------------------------------------------------------------------*/
+
         }
 
         // Toggles song on click
@@ -129,4 +148,4 @@ class Points extends React.Component {
     }
 }
 
-export default Points
+export default RotateGrid

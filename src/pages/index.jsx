@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
-import IndexBackground from "../assets/artwork/IndexBackground"
+import IndexBackground from "../assets/artwork/sketches/index/IndexBackground"
 
 const Layover = styled.div`
   position: absolute;

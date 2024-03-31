@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import "./helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
-import image from './images/tercerojo-01.jpg'
+import muladhara from '../assets/audio/Muladhara01.mp3'
+import image from '../assets/images/garganta-03.jpg'
 
 const Frame = styled.div`
     width: 100%;
@@ -12,7 +12,7 @@ const Frame = styled.div`
     overflow: hidden;
 `
 
-class Soundwave extends React.Component {
+class Points extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -67,22 +67,22 @@ class Soundwave extends React.Component {
             // Use overal song volume to detect "beats"
             let amplitude = amp.getLevel()*200
             p.tint(p.random(255),p.random(105), p.random(255), 1+amplitude/20); // Display at half opacity
-            p.image(backgroundimg, (0), (0), imageWidth+amplitude, imageHeight+amplitude)      
 
             p.stroke(255, 255, 255)
             p.noFill()
 
-            // p.push()
-            // p.rotate(20+p.int(amplitude*10))
-            // p.rect(0, 0, amplitude*5, amplitude*5)
-            // p.pop()
+            p.push()
+            p.rotate(20+p.int(amplitude*10))
+            p.image(backgroundimg, (0), (0), imageWidth+amplitude, imageHeight+amplitude)      
+
+            p.pop()
 
             if(imageWidth>canvasWidth*2){
-                sizeModifier=-1
+                sizeModifier=-2
             }
 
             if(imageWidth<canvasWidth){
-                sizeModifier=1
+                sizeModifier=2
             }
             
             imageWidth+=sizeModifier
@@ -129,4 +129,4 @@ class Soundwave extends React.Component {
     }
 }
 
-export default Soundwave
+export default Points

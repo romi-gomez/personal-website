@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import "./helpers/p5sound_fix"
+import "../assets/helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
+import muladhara from '../assets/audio/Ajna01.mp3'
 
 const Frame = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
 `
-class SoundMountains extends React.Component {
+class SoundBlob extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -25,7 +25,9 @@ class SoundMountains extends React.Component {
             let bands = 1024*2
             let amp, fft, canvas, song
 
-            let r,g,b
+            let r = p.random(255)
+            let g = p.random(255)
+            let b = p.random(255)
              
             const columns = 100
             const rows = 100
@@ -59,7 +61,7 @@ class SoundMountains extends React.Component {
                 count++             
                 p.frameRate(29)
                 let waveform = fft.waveform(bands/2)
-                p.fill(g,b,r, p.random(10,30))
+                p.fill(g,r,b, p.random(30))
                 p.noStroke()
                 p.rect(0, 0, canvasWidth, canvasHeight)
                 // Use overal song volume to detect "beats"
@@ -70,30 +72,39 @@ class SoundMountains extends React.Component {
                 const high = fft.getEnergy(500, 10000)
                 
 
-                p.stroke(r,g, b, p.random(bass)); // Display at half opacity
+                p.stroke(r,g, b, bass); // Display at half opacity
 
                 // for (let i = 0; i < waveform.length; i++) {
                 //     let x = i-p.width/2
                 //     p.line(x,p.height/2, x, waveform[i]*200);
                 // }
-                
-                p.stroke(r,b, g, p.random(bass)); // Display at half opacity
 
-                for (let i = 0; i < waveform.length; i++) {
-                    let x = i-p.width/2
-                    p.line(x,p.height-p.height/4, x, waveform[i]*300);
-                }
+                const pointYPos = 0
                 
-                if(bass>165){
-                    r = p.random(0,50)
-                    g = p.random(50,255)
-                    b = p.random(50,100)
-                }
+                for(let i = 0; i < bands; i++){         
+                    let pointYbottom = pointYPos + waveform[i]*10
+                    let pointYtop = pointYbottom - waveform[i]*70
+                    let angleIncrement = p.TWO_PI / bands;
                 
+                    let circleRadius = 200 + waveform[i] * 300;
+                    let x = 0 + p.cos(angleIncrement * i) * circleRadius
+                    let y = 0 + p.sin(angleIncrement * i) * circleRadius
+                  
+                    p.line(0,0,x,y)
+                    p.circle(x, y,  waveform[i]*1 )
+                    p.circle(x-10, y-10, waveform[i]*15 )
+                    p.circle(x-20, y-20,  waveform[i]*10 )
+                    p.circle(x+10, y+10, waveform[i]*5 )
+                   }
+                
+                if(bass >= 165){
+                    r = p.random(0,255)
+                    g = p.random(50,150)
+                    b = p.random(100,200)
+                    count = 0
+                }
             }
-     
              p.windowResized = () => {
-
             }
      
              // Toggles song on click
@@ -139,4 +150,4 @@ class SoundMountains extends React.Component {
 
 }
 
-export default SoundMountains
+export default SoundBlob

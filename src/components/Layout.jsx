@@ -17,7 +17,7 @@ const Layout = ({children}) => {
   return (
       <LayoutContainer >
         <Navbar />
-        {children}
+          {children}
         <Footer />
       </LayoutContainer>
   )

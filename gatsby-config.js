@@ -23,14 +23,6 @@ module.exports = {
       "path": "./src/assets/images/"
     },
     __key: "images"
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `audio`,
-      path: `./src/assets/artwork/audio/`,
-    },
-    __key: "audio"
   }
 ]
 };

@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import "./helpers/p5sound_fix"
+import "../assets/helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara02.mp3'
+import muladhara from '../assets/audio/Muladhara01.mp3'
 
 const Frame = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
 `
-class justSomeCircles extends React.Component {
+class SoundMountains extends React.Component {
     constructor() {
         super()
         this.myRef = React.createRef()
@@ -22,11 +22,15 @@ class justSomeCircles extends React.Component {
             let canvasWidth = document.getElementsByClassName("p5Canvas")[0].offsetWidth
             let canvasHeight = document.getElementsByClassName("p5Canvas")[0].offsetHeight
              
-            let bands = 1024
+            let bands = 1024*2
             let amp, fft, canvas, song
+
+            let r,g,b
              
-            const columns = canvasWidth/100
-            const rows = canvasHeight/100
+            const columns = 100
+            const rows = 100
+
+            let count = 0;
 
              // Loads the music file into p5.js to play on click
              p.preload = () => {
@@ -52,7 +56,10 @@ class justSomeCircles extends React.Component {
              }
      
              p.draw = () => {
-                p.fill(255, p.random(10))
+                count++             
+                p.frameRate(29)
+                let waveform = fft.waveform(bands/2)
+                p.fill(g,b,r, p.random(10,30))
                 p.noStroke()
                 p.rect(0, 0, canvasWidth, canvasHeight)
                 // Use overal song volume to detect "beats"
@@ -61,26 +68,28 @@ class justSomeCircles extends React.Component {
 
                 const bass = fft.getEnergy(20, 500)
                 const high = fft.getEnergy(500, 10000)
-                const mid = fft.getEnergy(1000, 4000)
+                
 
-                p.strokeWeight(p.random(1, 5)*bass/100)
-                p.noStroke()
-                p.fill(100,100,p.random(0, 255), p.random(50))
-                p.circle(0, 0, bass*10)
-                p.fill(255,p.random(10))
+                p.stroke(r,g, b, p.random(bass)); // Display at half opacity
 
-                p.stroke(255, p.random(200))
-                p.circle(0, 0, high*40)
-                p.circle(300, 0, mid*50)
-                p.circle(-300, 0, mid*50)
+                // for (let i = 0; i < waveform.length; i++) {
+                //     let x = i-p.width/2
+                //     p.line(x,p.height/2, x, waveform[i]*200);
+                // }
+                
+                p.stroke(r,b, g, p.random(bass)); // Display at half opacity
 
-                p.circle(0, 200, high*40)
-                p.circle(300, 200, mid*50)
-                p.circle(-300, 200, mid*50)
-
-                p.circle(0, -200, high*40)
-                p.circle(300, -200, mid*50)
-                p.circle(-300, -200, mid*50)
+                for (let i = 0; i < waveform.length; i++) {
+                    let x = i-p.width/2
+                    p.line(x,p.height-p.height/4, x, waveform[i]*300);
+                }
+                
+                if(bass>165){
+                    r = p.random(0,50)
+                    g = p.random(50,255)
+                    b = p.random(50,100)
+                }
+                
             }
      
              p.windowResized = () => {
@@ -130,4 +139,4 @@ class justSomeCircles extends React.Component {
 
 }
 
-export default justSomeCircles
+export default SoundMountains

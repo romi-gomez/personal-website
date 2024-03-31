@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import Frame from "../components/Frame"
+import Frame from "./Frame"
 
 const GalleryContainer = styled.div`
   position: relative;   

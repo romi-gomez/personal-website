@@ -6,7 +6,7 @@ import previewGrid from "../assets/images/gallery/previewGrid.svg"
 const FrameWrapper = styled.div`
     position: relative;
     min-width: 250px;
-    max-width: 275px;
+    max-width: 270px;
     width: 100%;
     height: 70%;
     display: flex;

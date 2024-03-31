@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import "./helpers/p5sound_fix"
+import "../assets/helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
 

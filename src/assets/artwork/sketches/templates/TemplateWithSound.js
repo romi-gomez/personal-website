@@ -3,7 +3,7 @@ import React from 'react'
 import "../helpers/p5sound_fix"
 import "p5/lib/addons/p5.sound"
 import * as p5 from "p5"
-import muladhara from './audio/Muladhara01.mp3'
+import muladhara from '../assets/audio/Muladhara01.mp3'
 
 class Template extends React.Component {
     constructor() {

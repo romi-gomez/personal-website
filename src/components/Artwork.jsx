@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Grid from '../assets/artwork/Grid'
-import JustSomeCircles from '../assets/artwork/JustSomeCircles'
-import RotateGrid from '../assets/artwork/RotateGrid'
-import SoundBlob from '../assets/artwork/SoundBlob'
-import SoundMountains from '../assets/artwork/SoundMountains'
-
+import Grid from '../assets/artwork/sketches/grid/Grid'
+import JustSomeCircles from '../assets/artwork/sketches/just-some-circles/JustSomeCircles'
+import RotateGrid from '../assets/artwork/sketches/rotate-grid/RotateGrid'
+import SoundBlob from '../assets/artwork/sketches/sound-blob/SoundBlob'
+import SoundMountains from '../assets/artwork/sketches/sound-mountains/SoundMountains'
+import MovingThreads from '../assets/artwork/sketches/moving-threads/MovingThreads'
+import Memory from '../assets/artwork/sketches/memory/Memory'
 
 const ArtworkContainer = styled.div`
     width: 100%;
@@ -45,6 +46,10 @@ const Artwork = ({artwork}) => {
         return <SoundBlob />
       case 'Mountains':
         return <SoundMountains />
+      case 'MovingThreads':
+        return <MovingThreads />
+      case 'Memory':
+        return <Memory />
       default:
         return <Grid />
     }
