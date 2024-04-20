@@ -1,8 +1,8 @@
 import * as React from "react"
 import '../styles/global.css'
 import styled from "styled-components"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import Navbar from "./templates/Navbar"
+import Footer from "./templates/Footer"
 
 const LayoutContainer = styled.main`
   color: #F3F3F3;

@@ -23,6 +23,27 @@ class Memory extends React.Component {
 
 
             //add your variables here
+            let mx=-10000
+            let my=-10000
+            //these are coordinates for the ball. If you wanted to use your mouse,
+            //you'd set these equal to MouseX and MouseY in mouseMoved()
+
+            let prevX;
+            let prevY;
+            let newX;
+            let newY;
+            let speed = 2;
+            let move=0;
+
+            let a = [];
+            let b= [];
+
+            let d;
+            //used when calculating distance between ball and point
+
+            let randX;
+            let randY;
+            //the random speed at which the ball moves in X and Y
 
 
             p.preload = () => {
@@ -38,62 +59,78 @@ class Memory extends React.Component {
                 canvas = p.createCanvas(canvasWidth, canvasHeight, p.p2D);
                 canvas.mouseClicked(p.handleClick)
                     
+                randX = p.random(1.5,2.5)
+                randY = p.random(1.5,2.5)
+
+                for(let i=0; i<200; i++){
+                    a[i] = i*10
+                    b[i] = i*10
+                }
             }
      
             p.draw = () => {
-                // // Main draw loop
-                // p.background(220); // Set the background color
-                // p.noFill(); // Don't fill the shapes
-                // p.strokeWeight(1); // Set the weight of the stroke
-            
-                // let centerX = canvasWidth / 2;
-                // let centerY = canvasHeight / 2;
-                // let maxRadius = Math.min(centerX, centerY);
-            
-                // // Draw concentric circles
-                // for (let radius = maxRadius; radius > 0; radius -= 20) {
-                //     p.ellipse(centerX, centerY, radius * 2, radius * 2);
-                // }
-            
-                // // Draw lines
-                // for (let angle = 0; angle < 360; angle += 10) {
-                //     let radian = p.radians(angle);
-                //     let x = centerX + maxRadius * p.cos(radian);
-                //     let y = centerY + maxRadius * p.sin(radian);
-                //     p.line(centerX, centerY, x, y);
-                // }
+                
+                p.background(255)
+                p.fill(0)
+                p.stroke(255,30,158,50)
 
-                    // Main draw loop
-    p.background(220); // Set the background color
-    p.strokeWeight(1); // Set the weight of the stroke
 
-    let centerX = canvasWidth / 2;
-    let centerY = canvasHeight / 2;
-    let maxRadius = Math.min(centerX, centerY);
+                //draw the vertical lines
+                for(let i=0; i<a.length; i++){
+                    prevX = -1
+                    for(let j=0; j<b.length; j++){
+                        d = p.dist(mx, my, a[i], b[j])
 
-    // Draw concentric circles
-    for (let radius = maxRadius; radius > 0; radius -= 20) {
-        p.ellipse(centerX, centerY, radius * 2, radius * 2);
-    }
+                        if(d==0){
+                            d=0.0001
+                        }
 
-    // Draw lines and rectangles
-    for (let angle = 0; angle < 360; angle += 10) {
-        let radian = p.radians(angle);
-        let x = centerX + maxRadius * p.cos(radian);
-        let y = centerY + maxRadius * p.sin(radian);
-        p.line(centerX, centerY, x, y);
+                        newX= a[i]-(100/d)*(mx-a[i])
+                        newY= b[j]-(25/d)*(my-b[j])
 
-        // Draw rectangles
-        for (let radius = maxRadius; radius > 20; radius -= 20) {
-            let x1 = centerX + radius * p.cos(radian);
-            let y1 = centerY + radius * p.sin(radian);
-            let x2 = centerX + (radius - 20) * p.cos(radian);
-            let y2 = centerY + (radius - 20) * p.sin(radian);
+                        p.ellipse(newX, newY, 5, 5)
 
-            p.fill( p.random(100), p.random(105)); // Set a random color
-        }
-    }
+                        if(prevX!=-1){
+                            p.line(prevX, prevY, newX, newY)
+                        }
 
+                        prevX=newX
+                        prevY=newY
+
+                        //iterate through the array, calculate distance (d) between mouse
+                        //and each point, then move each point by (25/d)*(mouseX-pointX) and in
+                        //Y. I took a lot of mathematical liberty here and just fucked with it
+                        //till it worked. The idea was that if the slope created by the ball and
+                        //the point is 3/4 and I want to move the point by a factor of 5, 
+                        //I move x by 5*4 points and y by 5*3. Someone who's good at math would
+                        //write an equation that makes more sense
+
+                    }
+                }
+
+                //draw the horizontal lines
+                for(let j=0; j<b.length;j++){
+                    prevX = -1
+                    for(let i=0; i<a.length;i++){
+                        d = p.dist(mx, my, a[i], b[j])
+
+                        if(d==0){
+                            d= 0.001
+                        }
+
+                        newX = a[i] - (25/d)*(mx-a[i])
+                        newY = b[j] -(25/d)*(my-b[j])
+
+                        if(prevX !=-1){
+                            p.line(prevX, prevY, newX, newY)
+                        }
+
+                        prevX=newX
+                        prevY=newY
+
+                        p.stroke(0,0,0,70)
+                    }
+                }
             }
     
             p.windowResized = () => {
@@ -109,6 +146,11 @@ class Memory extends React.Component {
      
             p.keyPressed  =() => {
             // Handle key presses
+            }
+
+            p.mouseMoved = () => {
+                mx = p.mouseX
+                my = p.mouseY
             }
 
             //add new functions below
