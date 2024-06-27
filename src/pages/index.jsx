@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
-import IndexBackground from "../assets/artwork/sketches/index/IndexBackground"
+import MovingThreads from "../assets/artwork/sketches/moving-threads/MovingThreads"
 
 const Layover = styled.div`
   position: absolute;
@@ -14,7 +14,7 @@ const Layover = styled.div`
   z-index: 10;
 `
 
-const Background = styled (IndexBackground)`
+const Background = styled (MovingThreads)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -28,7 +28,7 @@ const TextWrapper = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
-  padding: 15% 5%;
+  padding: 10% 5% 0 ;
   overflow-y:scroll;
 `
 

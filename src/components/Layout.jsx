@@ -15,6 +15,7 @@ const LayoutContainer = styled.main`
   position: relative;
   display: block;
   width:100%;
+  background: #0f0628
 `
 
 const Layout = ({children}) => {

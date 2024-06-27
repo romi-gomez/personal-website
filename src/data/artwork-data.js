@@ -44,16 +44,7 @@ const artwork = [
         gif: "soundMountains.gif",
         bgcolor: "grey",
         path: "../artwork/SoundMountains"
-      },
-      {
-        group: "creative coding", 
-         title: "Camera",
-         tech: "P5",
-         img: "camera.png", 
-         gif: "camera.gif",
-         bgcolor: "grey",
-         path: "../artwork/SoundMountains"
-       }
+      }
     ]
   ]
 

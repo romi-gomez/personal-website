@@ -12,7 +12,7 @@ const NavContainer = styled.nav`
     left: 0; 
     padding:.5rem 0;
     color: #F3F3F3;
-    background-color: #1A1A1A;
+    background-color: #3A4276;
 
     a {
         color: #F3F3F3;
@@ -41,6 +41,7 @@ export default function Navbar() {
             <LinksContainer className="links">
                 <Link to="/">Home</Link>
                 <Link to="/gallery">Gallery</Link>
+                <Link to="/work">Work</Link>
             </LinksContainer>
         </NavContainer>
     )

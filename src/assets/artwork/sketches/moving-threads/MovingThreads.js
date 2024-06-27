@@ -24,7 +24,7 @@ class MovingThreads extends React.Component {
 
 
             //add your variables here
-            let colors = ["#FFC30F", "#581845", "#900C3F", "#C70039", "#FF5733", "#FFC30F"];
+            let colors = ["#0F0628", "#3A4276", "#6457A6", "#C4A7E7"];
             let cache = []
 
             const border = 0
@@ -48,7 +48,7 @@ class MovingThreads extends React.Component {
      
             p.draw = () => {
                 // Main draw loop
-                p.background(255)
+                p.background(15,6,40)
                 const intensity = 90;
                 const space = 10;
                 const freq = 3;
@@ -86,9 +86,9 @@ class MovingThreads extends React.Component {
                         let yyy = y + cache[counter].nx;
 
                         let d = p.sq(xxx - p.mouseX) + p.sq(yyy - p.mouseY);
-                        let l = 20
+                        let l = 10
 
-                        l *= (1-p.sqrt(d)/interact) * 3;
+                        l *= (1-p.sqrt(d)/interact) * 2;
 
                         let xx = p.cos(a) * l + xxx;
                         let yy = p.sin(a) * l + yyy;

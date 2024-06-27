@@ -8,7 +8,7 @@ const FooterContainer = styled.footer`
     left: 0;
     width: 100%;
     color: #F3F3F3;
-    background-color: #1A1A1A;
+    background-color: #3A4276;
     z-index: 200;
 `
 const FooterContent = styled.div`
@@ -27,7 +27,7 @@ export default function Navbar() {
         <FooterContainer>
             <FooterContent>
                 <p>
-                    Made with ❤️ by Romi Gomez
+                    
                 </p>
             </FooterContent>
         </FooterContainer>
