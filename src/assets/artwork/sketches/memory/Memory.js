@@ -62,7 +62,7 @@ class Memory extends React.Component {
                 randX = p.random(1.5,2.5)
                 randY = p.random(1.5,2.5)
 
-                for(let i=0; i<200; i++){
+                for(let i=0; i<150; i++){
                     a[i] = i*10
                     b[i] = i*10
                 }
@@ -70,10 +70,9 @@ class Memory extends React.Component {
      
             p.draw = () => {
                 
-                p.background(255)
-                p.fill(0)
-                p.stroke(255,30,158,50)
-
+                p.background(0)
+                p.fill(255)
+                p.stroke(255)
 
                 //draw the vertical lines
                 for(let i=0; i<a.length; i++){
@@ -88,7 +87,7 @@ class Memory extends React.Component {
                         newX= a[i]-(100/d)*(mx-a[i])
                         newY= b[j]-(25/d)*(my-b[j])
 
-                        p.ellipse(newX, newY, 5, 5)
+                        p.ellipse(newX, newY, 2, 2)
 
                         if(prevX!=-1){
                             p.line(prevX, prevY, newX, newY)
@@ -128,7 +127,7 @@ class Memory extends React.Component {
                         prevX=newX
                         prevY=newY
 
-                        p.stroke(0,0,0,70)
+                        p.stroke(255)
                     }
                 }
             }

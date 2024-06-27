@@ -1,9 +1,9 @@
 {
-  "name": "personal-website",
+  "name": "roaming-studio-website",
   "version": "1.0.0",
   "private": true,
-  "description": "personal-website",
-  "author": "Romi Gomez",
+  "description": "Roaming studio, where digital art meet business",
+  "author": "Roaming studio",
   "keywords": [
     "gatsby"
   ],

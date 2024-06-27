@@ -8,6 +8,9 @@ import SoundBlob from '../assets/artwork/sketches/sound-blob/SoundBlob'
 import SoundMountains from '../assets/artwork/sketches/sound-mountains/SoundMountains'
 import MovingThreads from '../assets/artwork/sketches/moving-threads/MovingThreads'
 import Memory from '../assets/artwork/sketches/memory/Memory'
+import FakeChladni from '../assets/artwork/sketches/fake-chladni/FakeChladni'
+import FakeChladniSquare from '../assets/artwork/sketches/fake-chladni/FakeChladniSquare'
+import SoundBlobGrid from '../assets/artwork/sketches/sound-blob/SoundBlobGrid'
 
 const ArtworkContainer = styled.div`
     width: 100%;
@@ -50,6 +53,12 @@ const Artwork = ({artwork}) => {
         return <MovingThreads />
       case 'Memory':
         return <Memory />
+      case 'Chladni':
+          return <FakeChladni />
+      case 'ChladniSquare':
+          return <FakeChladniSquare />
+      case 'SoundBlobGrid':
+          return <SoundBlobGrid />
       default:
         return <Grid />
     }
