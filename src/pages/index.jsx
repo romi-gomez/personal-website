@@ -45,6 +45,7 @@ const Presentation = styled.p`
   line-height: 1.5;
   width: 60%;
   position: relative;
+  font-weight: 500;
 `
 
 const IndexPage = (data) => {
