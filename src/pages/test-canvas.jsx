@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import Layout from "../components/templates/Layout"
-import Artwork from "../components/Artwork"
+import Artwork from "../components/layout/Artwork"
 
 
 const testCanvasPage = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState, useRef} from "react";
 import styled from "styled-components";
-import previewGrid from "../assets/images/gallery/previewGrid.svg"
+import previewGrid from "../../assets/images/gallery/previewGrid.svg"
 
 const FrameWrapper = styled.div`
     position: relative;
@@ -114,8 +114,8 @@ export default function Frame({id, children, content, setFrameOpened, ...props})
     const [mousePosition, setMousePosition ] = useState({x: 0, y: 0})
     const frameRef = useRef(null)
 
-    const backgroundImage = require(`../assets/images/gallery/${content.img}`).default
-    const backgroundGif = require(`../assets/images/gallery/${content.gif}`).default
+    const backgroundImage = require(`../../assets/images/gallery/${content.img}`).default
+    const backgroundGif = require(`../../assets/images/gallery/${content.gif}`).default
 
     const handleMouseMove = (event) => {
       //  Get mouse position relative to element

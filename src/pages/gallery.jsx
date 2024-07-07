@@ -1,10 +1,10 @@
 import * as React from "react"
-import { useState, useEffect} from "react"
+import { useState} from "react"
 import gallerys from "../data/artwork-data"
 import styled from "styled-components"
 import Layout from "../components/templates/Layout"
-import FramesGallery from "../components/FramesGallery"
-import GalleryOverlay from "../components/GalleryOverlay"
+import FramesGallery from "../components/layout/FramesGallery"
+import GalleryOverlay from "../components/layout/GalleryOverlay"
 
 const GallerysContainer = styled.div`
   width:100%;
