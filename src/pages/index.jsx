@@ -6,21 +6,17 @@ import PageTitle from "../components/tokens/PageTitle"
 import Pill  from "../components/tokens/Pill"
 
 const MainImage = styled.div`
-  position: absolute;
-  width: 90%;
+  position: relative;
+  width: 100%;
   height:57vh;
-  overflow: hidden;
-  background: black;
   border-radius: 1em;
   bottom: 3em;
-  overflow-y: scroll;
 `
 
 const Background = styled (MovingThreads)`
-  position: fixed  ;
+  position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: -1;
 `
 
@@ -41,7 +37,8 @@ const TextWrapper = styled.div`
   width:100%;
   top:0;
   left:0;
-  padding: 2em;
+  padding: 1em;
+  padding-bottom: 5em;
   z-index: 20;
 `
 
@@ -65,11 +62,13 @@ const IndexPage = (props) => {
     <Layout >
       <PageTitle content="I'm romi gomez" size="7"></PageTitle>
       <MainImage>
-        <PillsContainer>  
-          <Pill background="primary" text="Product design" />
-        </PillsContainer>
         <Background />
         <Overlay />
+        <PillsContainer>
+          <Pill text="Product Designer"></Pill>
+          <Pill text="Multimedia Artist"></Pill>
+          <Pill></Pill>
+        </PillsContainer>
       </MainImage>
       <TextWrapper>
           <Presentation>

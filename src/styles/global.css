@@ -10,6 +10,10 @@ html, body, main, #___gatsby, #gatsby-focus-wrapper {
     height:100%;
 }
 
+main {
+    display: flex;
+}
+
 section{
     height:100%;
 }

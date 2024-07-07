@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const NavContainer = styled.nav`
     z-index:1000000000000000;
-    position: fixed;
+    position:fixed;
     display: flex;
     justify-content: right;
     align-items: center;

@@ -17,7 +17,8 @@ const Title = styled.h4`
   font-family: ${props => props.theme.fonts.hero}
   font-size: ${props => props.size}em;
   color: ${props => props.color || props.theme.colors.primary};
-  margin-top: 1.1em;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
   padding: 0;
 `
 

@@ -9,7 +9,6 @@ const Layover = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 10;
 `
@@ -18,7 +17,6 @@ const Background = styled (IndexBackground)`
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: -1;
 `
 const TextWrapper = styled.div`
@@ -29,7 +27,6 @@ const TextWrapper = styled.div`
   left: 0;
   z-index: 10;
   padding: 15% 5%;
-  overflow-y:scroll;
 `
 
 const Title = styled.h1`

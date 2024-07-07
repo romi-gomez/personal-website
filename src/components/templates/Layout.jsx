@@ -36,10 +36,13 @@ const LayoutContainer = styled.main`
 
   color: ${props => props.theme.colors.white};
   position: relative;
-  display: flex;
   justify-content: center;
   width:100%;
-  background: ${props => props.theme.colors.white}
+  background: ${props => props.theme.colors.white};
+`
+
+const PageContent = styled.div`
+  width: 90%;
 `
 
 const Layout = ({children}) => {
@@ -48,7 +51,9 @@ const Layout = ({children}) => {
     <ThemeProvider theme={theme}>
       <LayoutContainer >
         <Navbar />
-          {children}
+          <PageContent>
+            {children}
+          </PageContent>
         <Footer />
       </LayoutContainer>
     </ThemeProvider>
