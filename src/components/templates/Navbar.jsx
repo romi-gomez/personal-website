@@ -3,35 +3,41 @@ import React from "react";
 import styled from "styled-components";
 
 const NavContainer = styled.nav`
+    z-index:1000000000000000;
     position: fixed;
     display: flex;
-    justify-content: center;
-    z-index:1000000000000000;
-    width: 100%;
-    top: 0;
-    left: 0; 
+    justify-content: right;
+    align-items: center;
+    border-radius: 0 0 1em 1em;
+    width: 90%;
     padding:.5rem 0;
-    color: #F3F3F3;
-    background-color: #3A4276;
+    height: 128px;
+    color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.primary};
 
     a {
-        color: #F3F3F3;
+        color: ${props => props.theme.colors.white};
+        text-align:center;
+        min-width:100px;
         text-decoration: none;
         margin: 0 1rem;
         transition: all 0.3s ease-in-out;
+        padding-bottom: 0.5em;
+        transition: * ease-in-out- .5s;
+        border-bottom:1px solid ${props => props.theme.colors.primary};
 
-        &::hover{
-            color: #F3F3F3;
-            font-weight: bold;
-            font-size: 1.2rem;
+        &:hover{
+            border-bottom:1px solid ${props => props.theme.colors.white};
+            font-weight: ${props => props.theme.fonts.weight.bold};
         }
     }
 
 `
 
 const LinksContainer = styled.div`
+    padding:2em;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 90%;
 `
 
@@ -39,9 +45,10 @@ export default function Navbar() {
     return (
         <NavContainer>
             <LinksContainer className="links">
-                <Link to="/">Home</Link>
-                <Link to="/gallery">Gallery</Link>
-                <Link to="/work">Work</Link>
+                <Link to="/">About me</Link>
+                <Link to="/gallery"> Art gallery</Link>
+                <Link to="/work">Projects</Link>
+                <Link to="/resume">Resume</Link>
             </LinksContainer>
         </NavContainer>
     )

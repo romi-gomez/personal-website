@@ -13,6 +13,7 @@ const GalleryContainer = styled.div`
 `
 
 const FramesGallery= ({gallery, setFrameOpened}) => {
+  
   const displayFrames = (frames) => {
     return frames.map((frame, key) => {
       return (

@@ -2,7 +2,7 @@ import * as React from "react"
 import { useState, useEffect} from "react"
 import gallerys from "../data/artwork-data"
 import styled from "styled-components"
-import Layout from "../components/Layout"
+import Layout from "../components/templates/Layout"
 import FramesGallery from "../components/FramesGallery"
 import GalleryOverlay from "../components/GalleryOverlay"
 
