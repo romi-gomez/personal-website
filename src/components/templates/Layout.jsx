@@ -1,9 +1,11 @@
 import * as React from "react"
 import '../../styles/global.css'
+import { GlobalStyle } from '../../../gatsby-browser'; // Adjust the path if necessary
 import styled from "styled-components"
 import {ThemeProvider} from "styled-components"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import MouseFollower from "../tokens/MouseFollower"
 
 const theme = {
   colors: {
@@ -33,22 +35,23 @@ const theme = {
 const LayoutContainer = styled.main`
 
  @import url("https://use.typekit.net/iio2ubs.css");
-
-  color: ${props => props.theme.colors.white};
   position: relative;
   justify-content: center;
   width:100%;
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.white}; 
 `
 
 const PageContent = styled.div`
   width: 90%;
+  padding-top: 7rem;
 `
 
 const Layout = ({children}) => {
   console.log("layout children", children)
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <MouseFollower />
       <LayoutContainer >
         <Navbar />
           <PageContent>

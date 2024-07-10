@@ -14,16 +14,24 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        "icon": "src/assets/images/icon.png"
+        "icon": `${__dirname}/src/assets/images/icon.png`
       }
     }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", 
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",
-        "path": "./src/assets/images/"
+        "path": `${__dirname}/src/assets/images/`
       },
       __key: "images"
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`, // Path to your data files
+      },
+    },
+    `gatsby-transformer-remark`,
   ]
 };

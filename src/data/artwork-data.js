@@ -6,6 +6,8 @@ const artwork = [
         tech: "P5",
         img: "grid.png", 
         gif: "grid.gif",
+        staticWebp: "grid-static.webp", 
+        animatedWebp: "grid.webp",
         bgcolor: "grey",
         path: "../artwork/Grid"
       },
@@ -15,6 +17,8 @@ const artwork = [
         tech: "P5",
         img: "justSomeCircles.png", 
         gif: "justSomeCircles.gif",
+        staticWebp: "justSomeCircles-static.webp", 
+        animatedWebp: "justSomeCircles.webp",
         bgcolor: "grey",
         path: "../artwork/JustSomeCircles"
       },
@@ -24,6 +28,8 @@ const artwork = [
         tech: "P5",
         img: "rotateGrid.png", 
         gif: "rotateGrid.gif", 
+        staticWebp: "rotateGrid-static.webp", 
+        animatedWebp: "rotateGrid.webp", 
         bgcolor: "grey",
         path: "../artwork/RotateGrid"
       },
@@ -33,6 +39,8 @@ const artwork = [
         tech: "P5",
         img: "soundBlob.png", 
         gif: "soundBlob.gif", 
+        staticWebp: "soundBlob-static.webp", 
+        animatedWebp: "soundBlob.webp", 
         bgcolor: "grey",
         path: "../artwork/SoundBlob"
       },
@@ -42,6 +50,8 @@ const artwork = [
         tech: "P5",
         img: "soundMountains.png", 
         gif: "soundMountains.gif",
+        staticWebp: "soundMountains-static.webp", 
+        animatedWebp: "soundMountains.webp", 
         bgcolor: "grey",
         path: "../artwork/SoundMountains"
       }
