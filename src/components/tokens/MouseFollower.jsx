@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import icon from '../../assets/images/pointer-a.svg';
 import iconHover from '../../assets/images/pointer-b.svg';
 
@@ -15,8 +14,8 @@ const MouseFollowerContainer = styled.div`
 `;
 
 const Icon = styled.img`
-  width: ${(props) => (props.hovered ? '64px' : '32px')}; /* Change size on hover */
-  height: ${(props) => (props.hovered ? '64px' : '32px')}; /* Change size on hover */
+  width: ${(props) => (props.$hovered ? '64px' : '32px')}; /* Change size on hover */
+  height: ${(props) => (props.$hovered ? '64px' : '32px')}; /* Change size on hover */
   transition: width 0.3s ease, height 0.3s ease;
 `;
 
@@ -56,7 +55,7 @@ const MouseFollower = () => {
 
   return (
     <MouseFollowerContainer style={{ left: position.x, top: position.y }}>
-      <Icon src={hovered ? iconHover : icon} alt="Mouse Follower Icon" hovered={hovered} />
+      <Icon src={hovered ? iconHover : icon} alt="Mouse Follower Icon" $hovered={hovered ? 1 : 0} />
     </MouseFollowerContainer>
   );
 };
