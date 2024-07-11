@@ -3,13 +3,12 @@ import { useState} from "react"
 import gallerys from "../data/artwork-data"
 import styled from "styled-components"
 import Layout from "../components/templates/Layout"
-import FramesGallery from "../components/layout/FramesGallery"
-import GalleryOverlay from "../components/layout/GalleryOverlay"
+import FramesGallery from "../components/gallery/FramesGallery"
+import GalleryOverlay from "../components/gallery/GalleryOverlay"
 
 const GallerysContainer = styled.div`
   width:100%;
   height: 100%;
-  padding: 2%;
 `
 
 const GalleryPage = () => {
@@ -38,7 +37,7 @@ const GalleryPage = () => {
           {displayGalleryOverlay(frameOpened, setFrameOpened)}
           {displayFramesGallerys(gallerys)}
         </GallerysContainer>
-    }/>
+    } background="dark" />
   )
 }
 

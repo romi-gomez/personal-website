@@ -8,6 +8,7 @@ html, body, main, #___gatsby, #gatsby-focus-wrapper {
     padding: 0;
     width: 100%;
     height:100%;
+    cursor:none;
 }
 
 main {
@@ -92,4 +93,9 @@ ul, ol {
 
 .clickable {
     pointer-events: auto; /* Ensure clickable elements are interactive */
+  }
+
+  a {
+    cursor:none;
+    text-decoration: none;
   }

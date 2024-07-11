@@ -9,7 +9,7 @@ const MouseFollowerContainer = styled.div`
   pointer-events: none; /* Ensure it doesn't interfere with mouse events */
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease-out;
-  z-index: 1000; /* Ensure it's on top of other elements */
+  z-index: 1000000; /* Ensure it's on top of other elements */
   color: ${(props) => props.theme.colors.highlight3}; /* Set the color for the SVG fill */
 `;
 
