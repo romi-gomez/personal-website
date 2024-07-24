@@ -11,45 +11,33 @@ module.exports = {
     url: "https://romigomez.com"
   },
   plugins: [
-    // Styled-components for CSS-in-JS
     "gatsby-plugin-styled-components",
-
-    // Gatsby image handling
     "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-
-    // Sitemap generation
     "gatsby-plugin-sitemap",
-
-    // Manifest for PWA support
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: `${__dirname}/src/assets/images/icon.png`,
-      },
+        "icon": `${__dirname}/src/assets/images/icon.png`
+      }
     },
-
-    // Source filesystem for images
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: "artworkImages",
-        path: `${__dirname}/src/assets/artwork/images/`,
+        name: 'images',
+        path: `${__dirname}/src/assets/images/`
       },
-      __key: "artworkImages",
+      __key: 'images'
     },
-
-    // Source filesystem for data
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `data`,
-        path: `${__dirname}/src/data/`,
+        name: 'data',
+        path: `${__dirname}/src/data/`
       },
+      __key: 'data'
     },
-
-    // Transformer for Markdown files
-    `gatsby-transformer-remark`,
-  ],
+    `gatsby-transformer-remark`
+  ]
 };
