@@ -2,9 +2,9 @@ import * as React from "react"
 import { graphql } from 'gatsby'
 import styled from "styled-components"
 import Layout from "../components/templates/Layout"
-import PageTitle from "../components/tokens/PageTitle"
-import Pill  from "../components/tokens/Pill"
-import MainImage  from "../components/tokens/MainImage"
+import PageTitle from "../components/shared/PageTitle"
+import Pill  from "../components/shared/Pill"
+import MainImage  from "../components/shared/MainImage"
 import { HoverProvider } from '../context/HoverContext'
 
 

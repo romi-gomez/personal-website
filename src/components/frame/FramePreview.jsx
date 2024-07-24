@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import previewGrid from '../../assets/images/gallery/previewGridPortrait.svg';
+import previewGrid from '../../assets/artwork/thumbnails/previewGridPortrait.svg';
 
 const Preview = styled.div.attrs(props => ({
   style: {

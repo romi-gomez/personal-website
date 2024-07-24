@@ -6,7 +6,7 @@ import styled from "styled-components"
 import {ThemeProvider} from "styled-components"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import MouseFollower from "../tokens/MouseFollower"
+import MouseFollower from "../shared/MouseFollower"
 
 const LayoutContainer = styled.main`
 

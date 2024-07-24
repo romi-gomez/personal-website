@@ -16,7 +16,6 @@ const GalleryContainer = styled.div`
   overflow-x: scroll;
   scroll-behavior: smooth;
   white-space: nowrap;
-  background:red;
 
   /* Hide scrollbar */
   -ms-overflow-style: none;  /* Internet Explorer 10+ */

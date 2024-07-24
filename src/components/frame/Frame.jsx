@@ -31,9 +31,9 @@ export default function Frame({ id, children, content, setFrameOpened, ...props 
     handleMouseLeave,
   } = useMouseFollowing(20);
 
-  const staticImage = require(`../../assets/images/gallery/${content.img}`).default;
-  const animatedWebp = require(`../../assets/images/gallery/${content.animatedWebp}`).default;
-  const animatedGif = require(`../../assets/images/gallery/${content.gif}`).default;
+  const staticImage = require(`../../assets/artwork/thumbnails/${content.img}`).default;
+  const animatedWebp = require(`../../assets/artwork/thumbnails/${content.animatedWebp}`).default;
+  const animatedGif = require(`../../assets/artwork/thumbnails/${content.gif}`).default;
 
   const handleFrameClicked = () => {
     setFrameOpened(content);
