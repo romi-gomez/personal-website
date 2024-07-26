@@ -6,7 +6,7 @@ const fadeIn = keyframes`
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: .8;
   }
 `;
 
@@ -19,25 +19,14 @@ const slideIn = keyframes`
   }
 `;
 
-const pulse = keyframes`
-  0% {
-    text-shadow: 0 0 10px ${(props) => props.theme.colors.primaryLight};
-  }
-  50% {
-    text-shadow: 0 0 20px ${(props) => props.theme.colors.primaryLight};
-  }
-  100% {
-    text-shadow: 0 0 10px ${(props) => props.theme.colors.primaryLight};
-  }
-`;
-
 const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: ${props => props.theme.colors.primaryDark};
+  opacity:.3;
   z-index: 999;
   animation: ${fadeIn} 0.5s forwards;
 `;
@@ -60,6 +49,7 @@ const PopupContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 2px solid ${(props) => props.theme.colors.primary};
+  overflow: hidden; /* Ensures the lines don't overflow out of the container */
 `;
 
 const CloseButton = styled.button`
@@ -102,24 +92,19 @@ const Text = styled.p`
 
 const Highlight = styled.span`
   color: ${(props) => props.theme.colors.primary};
-  animation: ${pulse} 1.5s infinite;
 `;
 
 const ConstructionPopup = ({ onClose }) => {
-  const titleText = "This site is under construction";
-  const bodyText = "But you are more than welcome to check the building process. I'm updating it every day.";
-
   return (
     <>
       <Overlay onClick={onClose} />
       <PopupContainer>
         <CloseButton onClick={onClose}>&times;</CloseButton>
         <PopupContent>
-          <Title>{titleText}</Title>
+          <Title>This site is under construction</Title>
           <Text>
-            {bodyText.split(' ').map((word, index) => (
-              <Highlight key={index}>{word} </Highlight>
-            ))}
+            But you are more than welcome to check the building process. <br />
+            I'm updating it <Highlight>every day</Highlight>.
           </Text>
         </PopupContent>
       </PopupContainer>
