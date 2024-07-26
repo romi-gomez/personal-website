@@ -15,6 +15,7 @@ const TitleContainer = styled.div `
   position: relative;
   width: 100%;
   margin-bottom: 2rem;
+  z-index: 100;
 `
 
 const Title = styled.h4`

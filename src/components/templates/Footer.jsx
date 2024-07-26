@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-    z-index:1000000000000000;
+    z-index:100;
     position: fixed;
     align-items: center;
     border-radius: 1em 1em 0 0; 

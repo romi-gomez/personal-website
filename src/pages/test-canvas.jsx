@@ -7,7 +7,7 @@ const testCanvasPage = () => {
 
   return (
     <Layout children = {
-        <Artwork artwork={{title:"Chladni"}}/>
+        <Artwork artwork={{title:"ZenLines"}}/>
     }/>
   )
 }
