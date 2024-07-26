@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import Frame from '../frame/Frame';
+import Frame from '../shared/frame/Frame';
 
 const GalleryWrapper = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useMouseFollowing } from '../../hooks/useMouseFollowing';
+import { useMouseFollowing } from '../../../hooks/useMouseFollowing';
 import FrameContainer from './FrameContainer';
 import FramePreview from './FramePreview';
 
@@ -31,9 +31,9 @@ export default function Frame({ id, children, content, setFrameOpened, ...props 
     handleMouseLeave,
   } = useMouseFollowing(20);
 
-  const staticImage = require(`../../assets/artwork/thumbnails/${content.img}`).default;
-  const animatedWebp = require(`../../assets/artwork/thumbnails/${content.animatedWebp}`).default;
-  const animatedGif = require(`../../assets/artwork/thumbnails/${content.gif}`).default;
+  const staticImage = require(`../../../assets/artwork/thumbnails/${content.img}`).default;
+  const animatedWebp = require(`../../../assets/artwork/thumbnails/${content.animatedWebp}`).default;
+  const animatedGif = require(`../../../assets/artwork/thumbnails/${content.gif}`).default;
 
   const handleFrameClicked = () => {
     setFrameOpened(content);
