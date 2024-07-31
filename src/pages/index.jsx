@@ -49,7 +49,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <HoverProvider>
-      <Layout>
+      <Layout showSketch={true}>
         {showPopup && <ConstructionPopup onClose={handleClosePopup} />}
         <PageTitle content="I'm Romi Gomez - " size="7" />
         <MainImage>

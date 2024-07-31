@@ -18,7 +18,7 @@ const LayoutContainer = styled.main`
 `;
 
 const PageContent = styled.div`
-  width: 90%;
+  width: 100%;
   padding-top: 7rem;
 `;
 
@@ -28,7 +28,9 @@ const Layout = (props) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <MouseFollower />
-      <ZenLines mode="light"/>
+      {
+        props.showSketch ? <ZenLines mode="light"/> : ""
+      }
       <LayoutContainer $background={props.background}>
         <Navbar />
         <PageContent>

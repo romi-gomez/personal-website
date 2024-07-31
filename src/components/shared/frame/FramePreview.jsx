@@ -4,8 +4,8 @@ import previewGrid from '../../../assets/artwork/thumbnails/previewGridPortrait.
 
 const Preview = styled.div.attrs(props => ({
   style: {
-    visibility: props.isFrameOnHover ? 'visible' : 'hidden',
-    opacity: props.isFrameOnHover ? 1 : 0,
+    visibility: props.$isFrameOnHover ? 'visible' : 'hidden',
+    opacity: props.$isFrameOnHover ? 1 : 0,
   },
 }))`
   position: absolute;
@@ -21,10 +21,10 @@ const Preview = styled.div.attrs(props => ({
 
   .previewGrid {
     position: absolute;
-    top: 0;
+    top: -30%;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 150%;
+    height: 150%;
     opacity: 0.5;
   }
 
@@ -68,7 +68,7 @@ const FrameInstructions = styled.p`
 `;
 
 const FramePreview = ({ isFrameOnHover, title, group, tech }) => (
-  <Preview isFrameOnHover={isFrameOnHover}>
+  <Preview $isFrameOnHover={isFrameOnHover}>
     <h2>{title}</h2>
     <h3>{group}</h3>
     <h4>{tech}</h4>
