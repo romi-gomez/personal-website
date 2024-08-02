@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import previewGrid from '../../../assets/artwork/thumbnails/previewGridPortrait.svg';
 
 const Preview = styled.div.attrs(props => ({
   style: {
@@ -9,29 +8,71 @@ const Preview = styled.div.attrs(props => ({
   },
 }))`
   position: absolute;
-  top: -12.5%;
-  left: -12.5%;
-  width: 125%;
-  height: 125%;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
   z-index: 10000;
   transform: translateZ(50px); /* Move forward in 3D space */
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   pointer-events: none; /* Ensure it doesn't interfere with mouse events */
-  padding: 2rem;
+  overflow: hidden; /* Hide overflow */
 
   .previewGrid {
     position: absolute;
-    top: -30%;
-    left: 0;
-    width: 150%;
-    height: 150%;
+    top: 0px; /* Offset to hide the top border line */
+    left: -1px; /* Offset to hide the left border line */
+    width: calc(100% + 2px); /* Compensate for the offset */
+    height: calc(100% + 2px); /* Compensate for the offset */
+    background-size: 2rem 2rem;
+    background-image: 
+      linear-gradient(to right, white 1px, transparent 1px),
+      linear-gradient(to bottom, white 1px, transparent 1px);
     opacity: 0.5;
+  }
+
+  .crosses {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .cross {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    transform: translate(-50%, -50%); /* Center the cross */
+  }
+
+  .cross::before, .cross::after {
+    content: '';
+    position: absolute;
+    background: white;
+  }
+
+  .cross::before {
+    width: .5rem; /* Adjust the length of the cross arms */
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cross::after {
+    width: 2px;
+    height: .5rem; /* Adjust the length of the cross arms */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   h2, h3, h4 {
     position: absolute;
     margin: 0;
-    text-orientation: upright;
     color: white;
   }
 
@@ -67,12 +108,34 @@ const FrameInstructions = styled.p`
   border-radius: 5px;
 `;
 
+const generateCrosses = () => {
+  const crosses = [];
+  for (let y = 1; y <= 100; y += 3) {
+    for (let x = 1; x <= 100; x += 3) {
+      crosses.push(
+        <div
+          key={`${x}-${y}`}
+          className="cross"
+          style={{
+            top: `${y * 2}rem`,
+            left: `${x * 2}rem`,
+          }}
+        />
+      );
+    }
+  }
+  return crosses;
+};
+
 const FramePreview = ({ isFrameOnHover, title, group, tech }) => (
   <Preview $isFrameOnHover={isFrameOnHover}>
     <h2>{title}</h2>
     <h3>{group}</h3>
     <h4>{tech}</h4>
-    <img className="previewGrid" src={previewGrid} alt="preview grid" />
+    <div className="previewGrid"></div>
+    <div className="crosses">
+      {generateCrosses()}
+    </div>
     <FrameInstructions>Click to see live</FrameInstructions>
   </Preview>
 );

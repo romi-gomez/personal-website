@@ -7,7 +7,7 @@ const TitleContainer = styled.div`
   justify-content: center;
   position: relative;
   width: 100%;
-  z-index: 100;
+  z-index: 1;
 `;
 
 const Title = styled.h4`
@@ -66,8 +66,8 @@ const PageTitle = (props) => {
 
   useEffect(() => {
     gsap.set(titleRef.current, { visibility: 'visible' });
-    const glitch1 = glitchEffect(glitch1Ref.current, 1);
-    const glitch2 = glitchEffect(glitch2Ref.current, 1.2);
+    const glitch1 = glitchEffect(glitch1Ref.current, (gsap.utils.random(.5, 1.5)));
+    const glitch2 = glitchEffect(glitch2Ref.current, (gsap.utils.random(.5, 1.5)));
 
     const handleMouseEnter = () => {
       glitch1.play();
