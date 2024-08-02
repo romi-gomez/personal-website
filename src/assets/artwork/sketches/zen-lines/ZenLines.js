@@ -85,9 +85,25 @@ class ZenLines extends React.Component {
     function resetCanvas() {
       dots = [];
       lines = [];
+      let usedX = new Set();
+      let usedY = new Set();
+
       for (let i = 0; i < numDots; i++) {
-        let x = Math.round(p.random(p.width) / gridSpacing) * gridSpacing;
-        let y = Math.round(p.random(p.height) / gridSpacing) * gridSpacing;
+        let x, y;
+
+        // Ensure unique x coordinate
+        do {
+          x = Math.round(p.random(p.width) / gridSpacing) * gridSpacing;
+        } while (usedX.has(x));
+
+        // Ensure unique y coordinate
+        do {
+          y = Math.round(p.random(p.height) / gridSpacing) * gridSpacing;
+        } while (usedY.has(y));
+
+        usedX.add(x);
+        usedY.add(y);
+
         let color = p.random(colors);
         let dot = new Dot(x, y, color);
         dots.push(dot);
