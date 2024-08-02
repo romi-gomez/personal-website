@@ -19,7 +19,8 @@ const LayoutContainer = styled.main`
 
 const PageContent = styled.div`
   width: 100%;
-  padding-top: 7rem;
+  padding: 5%;
+  padding-top:9rem;
 `;
 
 const Layout = (props) => {
