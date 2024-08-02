@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
     <HoverProvider>
       <Layout showSketch={true}>
         {showPopup && <ConstructionPopup onClose={handleClosePopup} />}
-        <PageTitle content="I'm Romi Gomez - " size="7" />
+        <PageTitle content="- I'm Romi Gomez -" size="7" />
         <MainImage>
           <PillsContainer>
             <Pill className="clickable" color="white" background="primary" text="Product Designer" />
