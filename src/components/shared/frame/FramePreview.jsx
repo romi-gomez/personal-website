@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
 
 const Preview = styled.div.attrs(props => ({
   style: {
@@ -127,17 +128,46 @@ const generateCrosses = () => {
   return crosses;
 };
 
-const FramePreview = ({ isFrameOnHover, title, group, tech }) => (
-  <Preview $isFrameOnHover={isFrameOnHover}>
-    <h2>{title}</h2>
-    <h3>{group}</h3>
-    <h4>{tech}</h4>
-    <div className="previewGrid"></div>
-    <div className="crosses">
-      {generateCrosses()}
-    </div>
-    <FrameInstructions>Click to see live</FrameInstructions>
-  </Preview>
-);
+const FramePreview = ({ isFrameOnHover, title, group, tech }) => {
+  const crossesRef = useRef([]);
 
-export default FramePreview;
+  useEffect(() => {
+    if (isFrameOnHover) {
+      crossesRef.current.forEach((cross, index) => {
+        gsap.to(cross, {
+          opacity: 0,
+          duration: 0.3,
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.05,
+          ease: 'power1.inOut',
+        });
+      });
+    } else {
+      gsap.killTweensOf(crossesRef.current);
+      gsap.to(crossesRef.current, { opacity: 1, duration: 0.3 });
+    }
+  }, [isFrameOnHover]);
+
+  return (
+    <Preview $isFrameOnHover={isFrameOnHover}>
+      <h2>{title}</h2>
+      <h3>{group}</h3>
+      <h4>{tech}</h4>
+      <div className="previewGrid"></div>
+      <div className="crosses">
+        {generateCrosses().map((cross, index) => (
+          <div
+            key={index}
+            ref={(el) => (crossesRef.current[index] = el)}
+            className="cross"
+            style={cross.props.style}
+          />
+        ))}
+      </div>
+      <FrameInstructions>Click to see live</FrameInstructions>
+    </Preview>
+  );
+};
+
+export default FramePreview;  
