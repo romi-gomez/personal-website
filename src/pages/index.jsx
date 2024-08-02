@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Layout from "../components/templates/Layout";
 import PageTitle from "../components/shared/PageTitle";
 import Pill from "../components/shared/Pill";
-import MainImage from "../components/shared/MainImage";
+import SketchFrame from "../components/shared/frame/SketchFrame";
 import { HoverProvider } from "../context/HoverContext";
 import ConstructionPopup from "../components/ConstructionPopup";
 
@@ -52,13 +52,13 @@ const IndexPage = ({ data }) => {
       <Layout showSketch={true}>
         {showPopup && <ConstructionPopup onClose={handleClosePopup} />}
         <PageTitle content="- I'm Romi Gomez -" size="7" />
-        <MainImage>
+        <SketchFrame>
           <PillsContainer>
             <Pill className="clickable" color="white" background="primary" text="Product Designer" />
             <Pill className="clickable" color="dark" background="highlight1" text="Multimedia Artist" />
             <Pill className="clickable" color="white" background="highlight2" text="Frontend Developer" />
           </PillsContainer>
-        </MainImage>
+        </SketchFrame>
         <TextWrapper>
           <Presentation dangerouslySetInnerHTML={{ __html: html }} />
         </TextWrapper>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import Frame from '../shared/frame/Frame';
+import ImageFrame from '../shared/frame/ImageFrame';
 
 const GalleryWrapper = styled.div`
   position: relative;
@@ -68,7 +68,7 @@ const FramesGallery = ({ gallery, setFrameOpened }) => {
   const displayFrames = (frames) => {
     return frames.map((frame, key) => (
       <FrameWrapper key={key}>
-        <Frame id={key} content={frame} setFrameOpened={setFrameOpened} />
+        <ImageFrame id={key} content={frame} setFrameOpened={setFrameOpened} />
       </FrameWrapper>
     ));
   };

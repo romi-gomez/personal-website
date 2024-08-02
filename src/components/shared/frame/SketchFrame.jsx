@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {keyframes} from 'styled-components'
-import MovingThreads from '../../assets/artwork/sketches/moving-threads/MovingThreads'
+import MovingThreads from '../../../assets/artwork/sketches/moving-threads/MovingThreads'
 
 const BackgroundAnimation = keyframes `
   0% {
@@ -48,7 +48,7 @@ const Overlay = styled.div`
 `
 
 
-const MainImage = (props) => {
+const SketchFrame = (props) => {
   return (
     <Container className="clickable">
         {props.children}
@@ -60,4 +60,4 @@ const MainImage = (props) => {
   )
 }
 
-export default MainImage
+export default SketchFrame
