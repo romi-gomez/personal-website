@@ -9,7 +9,7 @@ const Frame = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index:1;
 `;
 
 class ZenLines extends React.Component {
@@ -19,11 +19,11 @@ class ZenLines extends React.Component {
   }
 
   Sketch = (p) => {
-    const { theme } = this.props;
+    const { mode } = this.props;
 
     let dots = [];
     let lines = [];
-    const numDots = 5;
+    const numDots = 3;
     const gridSpacing = 32;
     const colors = ["#3A4276", "#6457A6", "#C4A7E7"];
 
@@ -35,9 +35,10 @@ class ZenLines extends React.Component {
       }
 
       display() {
-        p.fill(this.color);
-        p.noStroke();
-        p.circle(this.x, this.y, 4);
+        p.stroke(this.color);
+        p.strokeWeight(3);
+        p.line(this.x - 4, this.y, this.x + 4, this.y);
+        p.line(this.x, this.y - 4, this.x, this.y + 4);
       }
     }
 
@@ -84,25 +85,9 @@ class ZenLines extends React.Component {
     function resetCanvas() {
       dots = [];
       lines = [];
-      let usedX = new Set();
-      let usedY = new Set();
-
       for (let i = 0; i < numDots; i++) {
-        let x, y;
-
-        // Ensure unique x coordinate
-        do {
-          x = Math.round(p.random(p.width) / gridSpacing) * gridSpacing;
-        } while (usedX.has(x));
-
-        // Ensure unique y coordinate
-        do {
-          y = Math.round(p.random(p.height) / gridSpacing) * gridSpacing;
-        } while (usedY.has(y));
-
-        usedX.add(x);
-        usedY.add(y);
-
+        let x = Math.round(p.random(p.width) / gridSpacing) * gridSpacing;
+        let y = Math.round(p.random(p.height) / gridSpacing) * gridSpacing;
         let color = p.random(colors);
         let dot = new Dot(x, y, color);
         dots.push(dot);
@@ -119,10 +104,13 @@ class ZenLines extends React.Component {
     };
 
     p.draw = () => {
-      p.background(255, 255, 255);
+      const backgroundColor = mode === 'dark' ? 0 : 255;
+      const gridColor = mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+
+      p.background(backgroundColor);
 
       // Draw background grid
-      p.stroke('rgba(0, 0, 0, 0.05)');
+      p.stroke(gridColor);
       p.strokeWeight(1);
       for (let x = 0; x < p.width; x += gridSpacing) {
         p.line(x, 0, x, p.height);
