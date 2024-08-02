@@ -16,7 +16,6 @@ const Container = styled.div`
   width: 100%;
   height:57vh;
   border-radius: 1em;
-  bottom: 3em;
   overflow: hidden;
 `
 
@@ -27,7 +26,7 @@ const BackgoundWrapper = styled.div`
   top: 0;
   left: 0;
   z-index: 1; /* ensure it's behind interactive elements */
- animation: ${BackgroundAnimation} 0.7s ease-in-out forwards;
+  animation: ${BackgroundAnimation} 0.7s ease-in-out forwards;
 `
 
 const BackgroundSketch = styled (MovingThreads)`
@@ -39,7 +38,7 @@ const BackgroundSketch = styled (MovingThreads)`
 
 const Overlay = styled.div`
   position: absolute;
-  background: black;
+  background: ${props => props.theme.colors.primaryDark};
   width:100%;
   height:100%;
   top:0;
