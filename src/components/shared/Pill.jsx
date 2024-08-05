@@ -4,7 +4,7 @@ import { useHover } from '../../context/HoverContext'
 
 const PillContainer = styled.div`
     background-color: ${(props) => {
-        switch (props.background) {
+        switch (props.$background) {
             case 'primary':
                 return props.theme.colors.primaryLight
                 break;
@@ -24,7 +24,7 @@ const PillContainer = styled.div`
         
     }};
     color: ${(props) => {
-      switch (props.color) {
+      switch (props.$color) {
         case 'light':
           return props.theme.colors.white
           break;
@@ -51,7 +51,7 @@ const PillContainer = styled.div`
 
 const Pill = (props) => {
   return (
-    <PillContainer  className="clickable" color={props.color} background={props.background}><p>{props.text}</p></PillContainer>
+    <PillContainer  className="clickable" $color={props.color} $background={props.background}><p>{props.text}</p></PillContainer>
   )
 }
 

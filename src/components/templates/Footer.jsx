@@ -4,11 +4,10 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
     z-index:100;
-    position: fixed;
     align-items: center;
     border-radius: 1em 1em 0 0; 
     bottom:0;
-    width: 90%;
+    width: 100%;
     height: 2em;
     color: ${props => props.theme.colors.white};
     background-color: ${props => props.theme.colors.primary};

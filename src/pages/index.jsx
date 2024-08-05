@@ -54,9 +54,9 @@ const IndexPage = ({ data }) => {
         <PageTitle content="- I'm Romi Gomez -" size="7" />
         <SketchFrame>
           <PillsContainer>
-            <Pill className="clickable" color="white" background="primary" text="Product Designer" />
-            <Pill className="clickable" color="dark" background="highlight1" text="Multimedia Artist" />
-            <Pill className="clickable" color="white" background="highlight2" text="Frontend Developer" />
+            <Pill className="clickable" $color="white" $background="primary" text="Product Designer" />
+            <Pill className="clickable" $color="dark" $background="highlight1" text="Multimedia Artist" />
+            <Pill className="clickable" $color="white" $background="highlight2" text="Frontend Developer" />
           </PillsContainer>
         </SketchFrame>
         <TextWrapper>
