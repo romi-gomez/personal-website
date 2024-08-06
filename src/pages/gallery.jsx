@@ -1,16 +1,14 @@
 import * as React from "react"
-import { useState, useEffect} from "react"
+import { useState} from "react"
 import gallerys from "../data/artwork-data"
 import styled from "styled-components"
-import Layout from "../components/Layout"
-import FramesGallery from "../components/FramesGallery"
-import GalleryOverlay from "../components/GalleryOverlay"
+import Layout from "../components/templates/Layout"
+import FramesGallery from "../components/gallery/FramesGallery"
+import GalleryOverlay from "../components/gallery/GalleryOverlay"
 
 const GallerysContainer = styled.div`
   width:100%;
   height: 100%;
-  padding: 2%;
-  overflow-x: scroll;
 `
 
 const GalleryPage = () => {
@@ -39,7 +37,7 @@ const GalleryPage = () => {
           {displayGalleryOverlay(frameOpened, setFrameOpened)}
           {displayFramesGallerys(gallerys)}
         </GallerysContainer>
-    }/>
+    } background="dark" />
   )
 }
 

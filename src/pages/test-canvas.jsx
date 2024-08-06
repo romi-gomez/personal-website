@@ -1,14 +1,13 @@
 import * as React from "react"
-import styled from "styled-components"
-import Layout from "../components/Layout"
-import Artwork from "../components/Artwork"
+import Layout from "../components/templates/Layout"
+import Artwork from "../components/gallery/Artwork"
 
 
 const testCanvasPage = () => {
 
   return (
     <Layout children = {
-        <Artwork artwork={{title:"Chladni"}}/>
+        <Artwork artwork={{title:"ZenLines"}}/>
     }/>
   )
 }

@@ -3,13 +3,19 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    z-index:100;
+    align-items: center;
+    border-radius: 1em 1em 0 0; 
+    bottom:0;
     width: 100%;
-    color: #F3F3F3;
-    background-color: #3A4276;
-    z-index: 200;
+    height: 2em;
+    color: ${props => props.theme.colors.white};
+    background-color: ${props => props.theme.colors.primary};
+    transition: all ease-in-out 1s;
+
+    &:hover{
+        height: 4em;
+    }
 `
 const FooterContent = styled.div`
     display: flex;
@@ -19,6 +25,7 @@ const FooterContent = styled.div`
     padding: .5rem;
 
     p {
+
     }
 `
 

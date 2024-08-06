@@ -1,77 +1,85 @@
-import * as React from "react"
-import styled from "styled-components"
-import Layout from "../components/Layout"
-import MovingThreads from "../assets/artwork/sketches/moving-threads/MovingThreads"
+import React, { useState } from "react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
+import Layout from "../components/templates/Layout";
+import PageTitle from "../components/shared/PageTitle";
+import Pill from "../components/shared/Pill";
+import SketchFrame from "../components/shared/frame/SketchFrame";
+import { HoverProvider } from "../context/HoverContext";
+import ConstructionPopup from "../components/ConstructionPopup";
 
-const Layover = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 10;
-`
-
-const Background = styled (MovingThreads)`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-`
 const TextWrapper = styled.div`
-  position: absolute;
+  position: relative;
+  color: ${(props) => props.theme.colors.primaryDark};
   width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
-  z-index: 10;
-  padding: 10% 5% 0 ;
-  overflow-y:scroll;
-`
-
-const Title = styled.h1`
- 
-`
-
-const Subtitle = styled.h2`
-  position: relative;
-  margin-bottom: 2rem;
-`
+  padding: 1em;
+  padding-bottom: 5em;
+  z-index: 20;
+`;
 
 const Presentation = styled.p`
   line-height: 1.5;
-  width: 60%;
-  position: relative;
+  width: 100%;
   font-weight: 500;
-`
+`;
 
-const IndexPage = (data) => {
- 
+const PillsContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  z-index: 10;
+`;
+
+const IndexPage = ({ data }) => {
+  const markdownRemark = data.file.childMarkdownRemark;
+  const { frontmatter, html } = markdownRemark;
+
+  const [showPopup, setShowPopup] = useState(true);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
-    <Layout >
-      <Background />
-      <Layover />
-      <TextWrapper>
-        <Title>Hi! I'm Romi Gomez</Title>
-        <Subtitle>A Creative developer and multimedia artist based in Uruguay</Subtitle>
-        
-        <Presentation>
-          As a creative professional, I've navigated the intricate paths of digital product development wearing many hats: I've cultivated a diverse expertise in frontend and fullstack development, also in UI and interaction design to craft dynamic and engaging user interfaces. My background in design allows me to meticulously translate static designs into immersive and vibrant digital experiences, paying close attention to detail and usability.
-          <br/>
-          <br/>
-          Beyond my development experience, I also bring a deep understanding of music and sound to my work. Leveraging my musical background, I enhance user experiences by integrating interactive audio elements and designing immersive soundscapes, I push the boundaries of web development, seamlessly blending functionality with captivating sound design.
-          <br/>
-          <br/>
-          Driven by a dedication to staying at the forefront of innovation and delivering high-quality work, I continuously explore new techniques and technologies to elevate my craft. Whether it's refining user interactions or fine-tuning audio effects, I approach each project with creativity and dedication, striving to create memorable and immersive experiences for users.
-        </Presentation>
-      </TextWrapper>
-    </Layout>
-  )
-}
+    <HoverProvider>
+      <Layout showSketch={true}>
+        {showPopup && <ConstructionPopup onClose={handleClosePopup} />}
+        <PageTitle content="- I'm Romi Gomez -" size="7" />
+        <SketchFrame>
+          <PillsContainer>
+            <Pill className="clickable" color="white" background="primary" text="Product Designer" />
+            <Pill className="clickable" color="dark" background="highlight1" text="Multimedia Artist" />
+            <Pill className="clickable" color="white" background="highlight2" text="Frontend Developer" />
+          </PillsContainer>
+        </SketchFrame>
+        <TextWrapper>
+          <Presentation dangerouslySetInnerHTML={{ __html: html }} />
+        </TextWrapper>
+      </Layout>
+    </HoverProvider>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head = () => <title>Home Page</title>
+export const pageQuery = graphql`
+  query {
+    file(relativePath: { eq: "presentation.md" }) {
+      childMarkdownRemark {
+        html
+        frontmatter {
+          title
+        }
+      }
+    }
+  }
+`;
+
+export const Head = () => <title>Home Page</title>;
