@@ -84,7 +84,7 @@ export default function Navbar({ expanded, onHoverChange }) {
       onMouseLeave={() => onHoverChange(false)}
       $expanded={expanded} // Pass the expanded prop to styled component
     >
-      <Logo /> {/* Add the Logo component here */}
+      <Logo expanded={expanded} />
       <LinksContainer $expanded={expanded}>
         <Link className="clickable" to="/">About me</Link>
         <Link className="clickable" to="/gallery">Art gallery</Link>

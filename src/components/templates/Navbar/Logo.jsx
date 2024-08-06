@@ -1,37 +1,46 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import gsap from 'gsap';
 import logo from '../../../assets/images/logo.svg';
-
-const hoverAnimation = keyframes`
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.2) rotate(360deg);
-  }
-`;
 
 const LogoContainer = styled.div`
   width: 4rem;
   height: 4rem;
   overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    fill: ${(props) => props.theme.colors.primary};
-    transition: transform 0.5s ease-in-out;
-
-    &:hover {
-      animation: ${hoverAnimation} 1s infinite;
-    }
-  }
+  position: relative; /* Needed for absolute positioning of the image */
 `;
 
-const Logo = () => (
-  <LogoContainer>
-    <img src={logo} alt="Logo" />
-  </LogoContainer>
-);
+const LogoImage = styled.img`
+  width: 100%;
+  height: 100%;
+  fill: ${(props) => props.theme.colors.primary};
+`;
+
+const Logo = ({ expanded }) => {
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(logoRef.current, {
+        y: expanded ? -20 : 0,
+        x: expanded ? 20 : 0,
+        z: expanded ? 50 : 0,
+        rotationY: expanded ? 360 : 0,
+        duration: 2,
+        ease: "power2.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+    });
+
+    return () => ctx.revert();
+  }, [expanded]);
+
+  return (
+    <LogoContainer ref={logoRef}>
+      <LogoImage src={logo} alt="Logo" />
+    </LogoContainer>
+  );
+};
 
 export default Logo;
