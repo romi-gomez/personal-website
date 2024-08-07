@@ -15,13 +15,13 @@ const underlineAnimation = keyframes`
 const NavContainer = styled.nav`
   height: 100%;
   width: ${(props) => (props.$expanded ? '12rem' : '4rem')};
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.primary};
   transition: width 0.3s ease-in-out;
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid ${(props) => props.theme.colors.primaryLight};
+  border-right: 2px solid ${(props) => props.theme.colors.primaryLight};
   position: fixed; /* Make the navbar fixed */
   top: 0;
   left: 0;
@@ -36,7 +36,7 @@ const LinksContainer = styled.div`
   margin-top: auto; /* Push the links to the bottom */
 
   a {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
     text-decoration: none;
     margin: 1rem 0;
     transition: all 0.3s ease-in-out;
@@ -62,7 +62,7 @@ const LinksContainer = styled.div`
       left: 0%;
       width: 0;
       height: 2px;
-      background-color: ${(props) => props.theme.colors.primary};
+      background-color: ${(props) => props.theme.colors.white};
       transition: all 0.3s ease-in-out;
     }
 
