@@ -7,6 +7,7 @@ import Pill from "../components/shared/Pill";
 import SketchFrame from "../components/shared/frame/SketchFrame";
 import { HoverProvider } from "../context/HoverContext";
 import ConstructionPopup from "../components/ConstructionPopup";
+import FullScreenGrid from "../components/shared/layout/FullScreenGrid";
 
 const TextWrapper = styled.div`
   position: relative;
@@ -51,17 +52,21 @@ const IndexPage = ({ data }) => {
     <HoverProvider>
       <Layout showSketch={true}>
         {showPopup && <ConstructionPopup onClose={handleClosePopup} />}
-        <PageTitle content="- I'm Romi Gomez -" size="7" />
-        <SketchFrame>
-          <PillsContainer>
-            <Pill className="clickable" color="white" background="primary" text="Product Designer" />
-            <Pill className="clickable" color="dark" background="highlight1" text="Multimedia Artist" />
-            <Pill className="clickable" color="white" background="highlight2" text="Frontend Developer" />
-          </PillsContainer>
-        </SketchFrame>
-        <TextWrapper>
-          <Presentation dangerouslySetInnerHTML={{ __html: html }} />
-        </TextWrapper>
+        <FullScreenGrid columns={1} rows="30% 70%">
+            <PageTitle content="- I'm Romi Gomez -" size="5" />
+            <SketchFrame>
+              <PillsContainer>
+                <Pill color="white" background="primary" text="Product Designer" />
+                <Pill color="dark" background="highlight1" text="Multimedia Artist" />
+                <Pill color="white" background="highlight2" text="Frontend Developer" />
+              </PillsContainer>
+            </SketchFrame>
+        </FullScreenGrid>
+        <FullScreenGrid>
+          <TextWrapper>
+            <Presentation dangerouslySetInnerHTML={{ __html: html }} />
+          </TextWrapper>
+        </FullScreenGrid>
       </Layout>
     </HoverProvider>
   );
