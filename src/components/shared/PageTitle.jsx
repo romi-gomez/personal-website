@@ -4,7 +4,7 @@ import gsap from 'gsap';
 
 const TitleContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
   position: relative;
   width: 100%;
   z-index: 1;
@@ -13,7 +13,7 @@ const TitleContainer = styled.div`
 const Title = styled.h4`
   display: block;
   white-space: nowrap; /* Prevent line breaks */
-  text-align:center;
+  text-align:left;
   font-family: ${(props) => props.theme.fonts.hero};
   font-size: ${(props) => props.size}em;
   color: ${(props) => props.theme.colors.primary};
