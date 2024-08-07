@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useMouseFollowing } from '../../../hooks/useMouseFollowing';
 import FrameContainer from './FrameContainer';
 import FramePreview from './FramePreview';
+import { getArtworkImagePath } from '../../../utils/pathHelper';
 
 const FrameWrapper = styled.div`
   position: relative;
@@ -31,9 +32,9 @@ export default function Frame({ id, children, content, setFrameOpened, ...props 
     handleMouseLeave,
   } = useMouseFollowing(20);
 
-  const staticImage = require(`../../../assets/artwork/thumbnails/${content.img}`).default;
-  const animatedWebp = require(`../../../assets/artwork/thumbnails/${content.animatedWebp}`).default;
-  const animatedGif = require(`../../../assets/artwork/thumbnails/${content.gif}`).default;
+  const staticImage = getArtworkImagePath(content.img);
+  const animatedWebp = getArtworkImagePath(content.animatedWebp);
+  const animatedGif = getArtworkImagePath(content.gif);
 
   const handleFrameClicked = () => {
     setFrameOpened(content);
