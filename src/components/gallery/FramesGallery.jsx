@@ -68,7 +68,7 @@ const FramesGallery = ({ gallery, setFrameOpened }) => {
   const displayFrames = (frames) => {
     return frames.map((frame, key) => (
       <FrameWrapper key={key}>
-        <ImageFrame id={key} content={frame} setFrameOpened={setFrameOpened} />
+        <ImageFrame id={key} content={frame} setFrameOpened={setFrameOpened} imgSource="Artwork"/>
       </FrameWrapper>
     ));
   };

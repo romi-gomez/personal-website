@@ -41,7 +41,7 @@ const Container = styled.div.attrs(props => ({
   }
 `;
 
-const FrameContainer = React.forwardRef(({ isFrameOnHover, frameOnFocus, mousePosition, constraint, bgcolor, staticImage, animatedWebp, animatedGif, title }, ref) => (
+const FrameContainer = React.forwardRef(({ isFrameOnHover, frameOnFocus, mousePosition, constraint, bgcolor, staticImage, animatedGif, title }, ref) => (
   <Container
     ref={ref}
     $isFrameOnHover={isFrameOnHover}
@@ -53,7 +53,6 @@ const FrameContainer = React.forwardRef(({ isFrameOnHover, frameOnFocus, mousePo
     <picture>
       {isFrameOnHover ? (
         <>
-          <source type="image/webp" srcSet={animatedWebp} />
           <img src={animatedGif} alt={title} />
         </>
       ) : (

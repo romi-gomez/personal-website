@@ -6,3 +6,7 @@ export const getArtworkImagePath = (relativePath) => {
   export const getProjectImagePath = (relativePath) => {
     return require(`@assets/projects/images/${relativePath}`).default;
   };
+
+  export const getImagePath = (relativePath) => {
+    return require(`@assets/images/${relativePath}`).default;
+  };
