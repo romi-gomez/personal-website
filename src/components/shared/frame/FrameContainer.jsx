@@ -19,8 +19,8 @@ const Container = styled.div.attrs(props => ({
   },
 }))`
   position: relative;
-  width: 95%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   transition: all 0.05s ease-in;
   background-color: #000;

@@ -9,7 +9,7 @@ const CoverContainer = styled.div`
   width: 100%;
   height:70vh;
   column-gap: 2rem; /* Add some space between columns */
-  border: 1px solid red;
+
 `;
 
 const Column = styled.div`
@@ -17,7 +17,6 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid green;
 `;
 
 const ProjectCover = ({ project, imageFirst = true }) => {
