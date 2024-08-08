@@ -84,8 +84,8 @@ export default function Frame({ id, children, content, setFrameOpened, imgSource
       <FramePreview
         isFrameOnHover={isFrameOnHover}
         title={content.title}
-        group={content.group}
-        tech={content.tech}
+        footnote={content.group}
+        highlight={content.tech}
       />
     </FrameWrapper>
   );

@@ -128,7 +128,7 @@ const generateCrosses = () => {
   return crosses;
 };
 
-const FramePreview = ({ isFrameOnHover, title, group, tech }) => {
+const FramePreview = ({ isFrameOnHover, title, footnote, highlight }) => {
   const crossesRef = useRef([]);
 
   useEffect(() => {
@@ -152,8 +152,8 @@ const FramePreview = ({ isFrameOnHover, title, group, tech }) => {
   return (
     <Preview $isFrameOnHover={isFrameOnHover}>
       <h2>{title}</h2>
-      <h3>{group}</h3>
-      <h4>{tech}</h4>
+      <h3>{footnote}</h3>
+      <h4>{highlight}</h4>
       <div className="previewGrid"></div>
       <div className="crosses">
         {generateCrosses().map((cross, index) => (

@@ -23,7 +23,10 @@ const ProjectCover = ({ project, imageFirst = true }) => {
 
   const imageContent = {
     staticImg: project.coverStatic,
-    animatedImg: project.cover
+    animatedImg: project.cover,
+    title: project.displayName,
+    group: project.role,
+    tech: project.tech
   }
 
   return (
