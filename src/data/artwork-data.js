@@ -14,7 +14,7 @@ const artwork = [
         title: "SomeCircles",
         tech: "P5",
         staticImg: "justSomeCircles-static.png", 
-        gif: "justSomeCircles.gif",
+        animatedImg: "justSomeCircles.gif",
         bgcolor: "grey",
         path: "../artwork/JustSomeCircles"
       },
@@ -23,7 +23,7 @@ const artwork = [
         title: "Mandala",
         tech: "P5",
         staticImg: "rotateGrid-static.png", 
-        gif: "rotateGrid.gif", 
+        animatedImg: "rotateGrid.gif", 
         bgcolor: "grey",
         path: "../artwork/RotateGrid"
       },
