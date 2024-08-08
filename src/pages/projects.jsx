@@ -8,21 +8,19 @@ import projects from '../data/projects';
 const PortfolioContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: ${(props) => props.theme.colors.white};
-  overflow-y: auto;
 `;
 
 const Projects = () => {
   const displayProjects = (projects) => {
     return projects.map((project) => {
-      return <ProjectCover key={project.name}>{project.name}</ProjectCover>;
+      return <ProjectCover key={project.name} project={project}/>;
     });
   };
 
   return (
-    <Layout>
+    <Layout showSketch={true} >
       <PortfolioContainer>
-        <PageTitle content="Featured Projects -" size="7"></PageTitle>
+        <PageTitle content="Featured Projects" size="5"></PageTitle>
         {displayProjects(projects)}
       </PortfolioContainer>
     </Layout>
