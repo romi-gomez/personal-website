@@ -27,8 +27,8 @@ const Preview = styled.div.attrs(props => ({
     height: calc(100% + 2px); /* Compensate for the offset */
     background-size: 2rem 2rem;
     background-image: 
-      linear-gradient(to right, white 1px, transparent 1px),
-      linear-gradient(to bottom, white 1px, transparent 1px);
+      linear-gradient(to right, ${props => props.theme.colors.primaryDark} 1px, transparent 1px),
+      linear-gradient(to bottom, ${props => props.theme.colors.primaryDark} 1px, transparent 1px);
     opacity: 0.5;
   }
 
@@ -45,14 +45,14 @@ const Preview = styled.div.attrs(props => ({
     position: absolute;
     width: 3px;
     height: 3px;
-    background: white;
+    background: ${props => props.theme.colors.primaryDark};
     transform: translate(-50%, -50%); /* Center the cross */
   }
 
   .cross::before, .cross::after {
     content: '';
     position: absolute;
-    background: white;
+    background: ${props => props.theme.colors.primaryDark};
   }
 
   .cross::before {
@@ -74,7 +74,7 @@ const Preview = styled.div.attrs(props => ({
   h2, h3, h4 {
     position: absolute;
     margin: 0;
-    color: white;
+    color: ${props => props.theme.colors.primaryDark};
   }
 
   h2 {
@@ -103,7 +103,7 @@ const FrameInstructions = styled.p`
   top: 6rem;
   right: 2rem;
   font-size: 0.7rem;
-  color: white;
+  color: ${props => props.theme.colors.primaryDark};
   background: rgba(0, 0, 0, 0.5);
   padding: 2px 5px;
   border-radius: 5px;
@@ -170,4 +170,4 @@ const FramePreview = ({ isFrameOnHover, title, group, tech }) => {
   );
 };
 
-export default FramePreview;  
+export default FramePreview;
