@@ -4,9 +4,6 @@ import { NavBarProvider } from './src/context/NavBarContext'; // Import the NavB
 
 // Define the global styles
 const GlobalStyle = createGlobalStyle`
-  body {
-    cursor: none; /* Hide the default cursor */
-  }
   .clickable {
     pointer-events: auto; /* Ensure clickable elements are interactive */
   }
@@ -16,11 +13,7 @@ const GlobalStyle = createGlobalStyle`
 export const onInitialClientRender = () => {
   const style = document.createElement('style');
   style.innerHTML = `
-    body {
-      cursor: none;
-    }
     a, .clickable {
-      cursor: none !important;
       pointer-events: auto;
     }
   `;

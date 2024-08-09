@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import icon from '../../assets/images/pointer-a.svg';
-import iconHover from '../../assets/images/pointer-b.svg';
+
+// Import your new icons
+import iconDefault from '../../assets/images/noun-faceless-alien-light.svg';
+import iconHover from '../../assets/images/noun-laugh-alien-light.svg';
+import iconClick from '../../assets/images/noun-lovely-alien-light.svg';
 
 // Styled component for the mouse follower
 const MouseFollowerContainer = styled.div`
@@ -14,14 +17,28 @@ const MouseFollowerContainer = styled.div`
 `;
 
 const Icon = styled.img`
-  width: ${(props) => (props.$hovered ? '64px' : '32px')}; /* Change size on hover */
-  height: ${(props) => (props.$hovered ? '64px' : '32px')}; /* Change size on hover */
+  width: ${(props) => {
+    if (props.$clicked) return '4rem'; // Size on click
+    if (props.$hovered) return '3rem'; // Size on hover
+    return '2rem'; // Default size
+  }};
+  height: ${(props) => {
+    if (props.$clicked) return '4rem'; // Size on click
+    if (props.$hovered) return '3rem'; // Size on hover
+    return '2rem'; // Default size
+  }};
   transition: width 0.3s ease, height 0.3s ease;
+
+    svg {
+     fill:   ${(props) => props.theme.colors.highlight3}; /* Set the color for the SVG fill */
+    }
 `;
 
 const MouseFollower = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [icon, setIcon] = useState(iconDefault);
 
   const handleMouseMove = (event) => {
     setPosition({ x: event.clientX, y: event.clientY });
@@ -29,14 +46,26 @@ const MouseFollower = () => {
 
   const handleMouseEnter = () => {
     setHovered(true);
+    setIcon(iconHover);
   };
 
   const handleMouseLeave = () => {
     setHovered(false);
+    setIcon(iconDefault);
+  };
+
+  const handleMouseClick = () => {
+    setClicked(true);
+    setIcon(iconClick);
+    setTimeout(() => {
+      setClicked(false);
+      setIcon(hovered ? iconHover : iconDefault);
+    }, 500); // Reset to hover or default icon after 500ms
   };
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleMouseClick);
 
     const clickableElements = document.querySelectorAll('.clickable');
     clickableElements.forEach((element) => {
@@ -46,16 +75,17 @@ const MouseFollower = () => {
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousedown', handleMouseClick);
       clickableElements.forEach((element) => {
         element.removeEventListener('mouseenter', handleMouseEnter);
         element.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
-  }, []);
+  }, [hovered]);
 
   return (
-    <MouseFollowerContainer style={{ left: position.x, top: position.y }}>
-      <Icon src={hovered ? iconHover : icon} alt="Mouse Follower Icon" $hovered={hovered ? 1 : 0} />
+    <MouseFollowerContainer style={{ left: `calc(${position.x}px - 1rem)`, top: `calc(${position.y}px - 1rem)` }}>
+      <Icon src={icon} alt="Mouse Follower Icon" $hovered={hovered} $clicked={clicked} />
     </MouseFollowerContainer>
   );
 };
