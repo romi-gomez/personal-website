@@ -5,7 +5,8 @@ import { NavBarContext } from '../../context/NavBarContext';
 
 const TitleContainer = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: right;
+  align-items: flex-start;
   position: relative;
   width: 100%;
   z-index: 1;
@@ -14,9 +15,10 @@ const TitleContainer = styled.div`
 const Title = styled.h4`
   display: block;
   white-space: nowrap; /* Prevent line breaks */
-  text-align:left;
+  text-align:right;
   font-family: ${(props) => props.theme.fonts.hero};
-  font-size: ${(props) => props.size}em;
+  /*font-size: ${(props) => props.size}em;*/
+  font-size: 2rem;
   color: ${(props) => props.theme.colors.primary};
   z-index: 100;
 `;
@@ -57,13 +59,13 @@ const PageTitle = ({ content, size }) => {
   const glitchEffect = (element, duration) => {
     return gsap.timeline({ paused: true, repeat: -1, repeatRefresh: true })
       .to(element, { duration: 0.1, skewX: () => gsap.utils.random(50, 90), ease: "power4.inOut" })
-      .to(element, { duration: 0.1, skewX: 0, ease: "power4.inOut" })
+      .to(element, { duration: 0.2, skewX: 0, ease: "power4.inOut" })
       .to(element, { duration: 0.1, opacity: 0 })
-      .to(element, { duration: 0.1, opacity: 1 })
-      .to(element, { duration: 0.1, x: () => gsap.utils.random(-30, 30) })
-      .to(element, { duration: 0.1, x: 0 })
-      .to(element, { duration: 0.1, y: () => gsap.utils.random(-30, 30) })
-      .to(element, { duration: 0.1, y: 0 });
+      .to(element, { duration: 0.3, opacity: 1 })
+      .to(element, { duration: 0.1, x: () => gsap.utils.random(-50, 30) })
+      .to(element, { duration: 0.2, x: 0 })
+      .to(element, { duration: 0.1, y: () => gsap.utils.random(-30, 50) })
+      .to(element, { duration: 0.3, y: 0 });
   };
 
   useEffect(() => {
@@ -79,7 +81,7 @@ const PageTitle = ({ content, size }) => {
       glitch1.pause();
       glitch2.pause();
       gsap.to([glitch1Ref.current, glitch2Ref.current], {
-        duration: 0.2,
+        duration: 0.9,
         skewX: 0,
         opacity: 1,
         x: 0,

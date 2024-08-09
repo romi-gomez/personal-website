@@ -4,14 +4,10 @@ import styled from 'styled-components';
 const Container = styled.div.attrs(props => ({
   style: {
     transform: props.$frameOnFocus && props.$mousePosition && props.$isFrameOnHover
-      ? 'rotateX(' +
-        ((props.$mousePosition.y - props.$frameOnFocus.frame.y - props.$frameOnFocus.frame.height / 2) / props.$constraint) +
-        'deg) ' +
-        'rotateY(' +
-        ((props.$mousePosition.x - props.$frameOnFocus.frame.x - props.$frameOnFocus.frame.width / 2) / props.$constraint) +
-        'deg) ' +
-        'scale(1.15) translateZ(50px)'
-      : '',
+      ? `rotateX(${((props.$mousePosition.y - props.$frameOnFocus.frame.y - props.$frameOnFocus.frame.height / 2) / props.$constraint)}deg)
+         rotateY(${((props.$mousePosition.x - props.$frameOnFocus.frame.x - props.$frameOnFocus.frame.width / 2) / props.$constraint)}deg)
+         scale(1.15) translateZ(50px)`
+      : 'rotateX(0deg) rotateY(0deg) scale(1) translateZ(0)',
     cursor: props.$isFrameOnHover ? 'pointer' : 'default',
     background: props.$bgcolor,
     zIndex: props.$isFrameOnHover ? 10000 : 0,
@@ -22,7 +18,7 @@ const Container = styled.div.attrs(props => ({
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  transition: all 0.05s ease-in;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   background-color: #000;
   overflow: hidden;
   border-radius: 10px;
@@ -52,9 +48,7 @@ const FrameContainer = React.forwardRef(({ isFrameOnHover, frameOnFocus, mousePo
   >
     <picture>
       {isFrameOnHover ? (
-        <>
-          <img src={animatedGif} alt={title} />
-        </>
+        <img src={animatedGif} alt={title} />
       ) : (
         <img src={staticImage} alt={title} />
       )}

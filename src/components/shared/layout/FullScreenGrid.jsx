@@ -11,15 +11,15 @@ const GridContainer = styled.div`
 
 const GridItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: ${props => props.$verticalalign || 'top' };
   justify-content: center;
 `;
 
-const FullScreenGrid = ({ columns = 1, rows = '1fr', children }) => {
+const FullScreenGrid = ({ columns = 1, rows = '1fr', children, verticalalign = 'top' }) => {
   return (
     <GridContainer $columns={columns} rows={rows}>
       {React.Children.map(children, (child, index) => (
-        <GridItem key={index}>{child}</GridItem>
+        <GridItem $verticalalign={verticalalign} key={index}>{child}</GridItem>
       ))}
     </GridContainer>
   );
