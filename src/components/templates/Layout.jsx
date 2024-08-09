@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import '../../styles/global.css';
 import theme from '../../styles/theme';
 import { GlobalStyle } from '../../../gatsby-browser'; // Adjust the path if necessary
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
+import { NavBarContext } from "../../context/NavBarContext";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer";
 import MouseFollower from "../shared/MouseFollower";
@@ -17,7 +18,6 @@ const LayoutContainer = styled.main`
   transition: grid-template-columns 0.3s ease-in-out;
   width: 100%;
   height: 100vh;
-
   background: ${(props) => (props.$background && props.$background === 'dark' ? props.theme.colors.primaryDark : props.theme.colors.white)};
 `;
 
@@ -28,15 +28,16 @@ const PageContent = styled.div`
 `;
 
 const Layout = (props) => {
-  const [isNavExpanded, setNavExpanded] = useState(false);
+  // Access the expanded state from NavBarContext
+  const { expanded } = useContext(NavBarContext);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <MouseFollower />
       {props.showSketch ? <ZenLines mode="light" /> : ""}
-      <LayoutContainer $background={props.background} $expanded={isNavExpanded}>
-        <Navbar expanded={isNavExpanded} onHoverChange={setNavExpanded} />
+      <LayoutContainer $background={props.background} $expanded={expanded}>
+        <Navbar />
         <div></div>
         <PageContent>
           {props.children}

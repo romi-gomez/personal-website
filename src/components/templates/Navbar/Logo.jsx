@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-
+import { NavBarContext } from '../../../context/NavBarContext'; // Import the context
 import logo from '../../../assets/images/logo.svg';
 
 gsap.registerPlugin(MotionPathPlugin);
@@ -20,9 +20,11 @@ const LogoImage = styled.img`
   z-index: 100000000;
 `;
 
-const Logo = ({ expanded }) => {
+const Logo = () => {
+  const { expanded } = useContext(NavBarContext); // Access expanded from context
   const logoRef = useRef(null);
   const timelineRef = useRef(gsap.timeline({ paused: true }));
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Define the animation sequence
@@ -32,9 +34,9 @@ const Logo = ({ expanded }) => {
           ease: "power1.inOut",
           motionPath: {
             path: [
-              { x: 0, y: 0 }, // Start point
-              { x: "25vw", y: "20vh" }, // Move downwards to create the parabolic effect
-              { x: "50vw", y: "30vh" }, // Move to near-center horizontally
+              { x: 0, y: 0 },
+              { x: "25vw", y: "20vh" },
+              { x: "50vw", y: "30vh" },
             ],
             curviness: 1.5,
             autoRotate: false,
@@ -43,23 +45,22 @@ const Logo = ({ expanded }) => {
         })
         .to(logoRef.current, {
           duration: 1.2,
-          x: "50vw", // Center horizontally
-          y: "8vh", // Move to the top of the screen
-          rotationZ: 10, // Swing slightly
+          x: "50vw",
+          y: "8vh",
+          rotationZ: 10,
           xPercent: -50,
           yPercent: -50,
           ease: "power2.inOut",
         })
         .to(logoRef.current, {
-          rotationZ: 0, // Reset to straight up
+          rotationZ: 0,
           yoyo: true,
           repeat: -1,
-          repeatRefresh: true, // Reset the values on each repeat cycle
+          repeatRefresh: true,
           duration: gsap.utils.random(1, 2),
           ease: "power1.inOut",
         });
 
-      // Play forward when expanded, reverse when not
       if (expanded) {
         timelineRef.current.play();
       } else {

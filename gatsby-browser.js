@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import React from 'react';
+import { NavBarProvider } from './src/context/NavBarContext'; // Import the NavBarProvider
 
 // Define the global styles
 const GlobalStyle = createGlobalStyle`
@@ -24,6 +25,15 @@ export const onInitialClientRender = () => {
     }
   `;
   document.head.appendChild(style);
+};
+
+// Wrap the root element with NavBarProvider
+export const wrapRootElement = ({ element }) => {
+  return (
+    <NavBarProvider>
+      {element}
+    </NavBarProvider>
+  );
 };
 
 // Export GlobalStyle for use in layout components

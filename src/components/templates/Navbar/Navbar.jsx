@@ -1,11 +1,12 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useContext } from "react";
 import styled, { keyframes, css } from "styled-components";
-import Logo from './Logo'; // Importing the Logo component
+import Logo from './Logo';
 import planet0 from '../../../assets/images/planet0.svg';
 import planet1 from '../../../assets/images/planet1.svg';
 import planet2 from '../../../assets/images/planet2.svg';
 import planet3 from '../../../assets/images/planet3.svg';
+import { NavBarContext } from '../../../context/NavBarContext'; // Import the context
 
 const underlineAnimation = keyframes`
   from {
@@ -19,17 +20,16 @@ const underlineAnimation = keyframes`
 const NavContainer = styled.nav`
   height: 100%;
   width: ${(props) => (props.$expanded ? '13rem' : '5rem')};
-  background-color: ${(props) => props.theme.colors.primaryDark};
+  background-color: ${(props) => props.theme.colors.primary};
   transition: width 0.3s ease-in-out;
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 2px solid ${(props) => props.theme.colors.primary};
-  position: fixed; /* Make the navbar fixed */
+  border-right: 4px solid ${(props) => props.theme.colors.primaryLighter};
+  position: fixed; 
   top: 0;
   left: 0;
-/* overflow: hidden;  Ensure it doesn't scroll */
   transition: all 0.3s ease-in-out;
 `;
 
@@ -38,7 +38,7 @@ const LinksContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  margin-top: auto; /* Push the links to the bottom */
+  margin-top: auto;
   font-family: ${props => props.theme.fonts.main};
   font-size: .75rem;
 
@@ -95,12 +95,14 @@ const LinksContainer = styled.div`
   }
 `;
 
-export default function Navbar({ expanded, onHoverChange }) {
+export default function Navbar() {
+  const { expanded, setExpanded } = useContext(NavBarContext); // Use the context
+
   return (
     <NavContainer
-      onMouseEnter={() => onHoverChange(true)}
-      onMouseLeave={() => onHoverChange(false)}
-      $expanded={expanded} // Pass the expanded prop to styled component
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+      $expanded={expanded}
     >
       <Logo expanded={expanded} />
       <LinksContainer $expanded={expanded}>

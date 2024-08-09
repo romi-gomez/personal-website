@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
+import { NavBarContext } from '../../context/NavBarContext';
 
 const TitleContainer = styled.div`
   display: flex;
@@ -46,11 +47,12 @@ const GlitchText = styled(Title)`
   }
 `;
 
-const PageTitle = (props) => {
-  const { content, size } = props;
+const PageTitle = ({ content, size }) => {
   const titleRef = useRef();
   const glitch1Ref = useRef();
   const glitch2Ref = useRef();
+
+  const { expanded } = useContext(NavBarContext); // Use the expanded state from NavBarContext
 
   const glitchEffect = (element, duration) => {
     return gsap.timeline({ paused: true, repeat: -1, repeatRefresh: true })
@@ -66,15 +68,14 @@ const PageTitle = (props) => {
 
   useEffect(() => {
     gsap.set(titleRef.current, { visibility: 'visible' });
-    const glitch1 = glitchEffect(glitch1Ref.current, (gsap.utils.random(.5, 1.5)));
-    const glitch2 = glitchEffect(glitch2Ref.current, (gsap.utils.random(.5, 1.5)));
+    const glitch1 = glitchEffect(glitch1Ref.current);
+    const glitch2 = glitchEffect(glitch2Ref.current);
 
-    const handleMouseEnter = () => {
+    // Trigger the glitch animation when navbar is expanded
+    if (expanded) {
       glitch1.play();
       glitch2.play();
-    };
-
-    const handleMouseLeave = () => {
+    } else {
       glitch1.pause();
       glitch2.pause();
       gsap.to([glitch1Ref.current, glitch2Ref.current], {
@@ -84,19 +85,13 @@ const PageTitle = (props) => {
         x: 0,
         y: 0,
       });
-    };
-
-    const titleElement = titleRef.current;
-    titleElement.addEventListener('mouseenter', handleMouseEnter);
-    titleElement.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     return () => {
-      titleElement.removeEventListener('mouseenter', handleMouseEnter);
-      titleElement.removeEventListener('mouseleave', handleMouseLeave);
       glitch1.kill();
       glitch2.kill();
     };
-  }, []);
+  }, [expanded]); // Add expanded as a dependency
 
   return (
     <TitleContainer>
