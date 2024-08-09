@@ -13,7 +13,6 @@ const GridItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid red; // TODO: Clean debbugging line
 `;
 
 const FullScreenGrid = ({ columns = 1, rows = '1fr', children }) => {
